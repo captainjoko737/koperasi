@@ -55,18 +55,17 @@
                 </tr>
                 <tr>
                   <td>2</td>
-                  <td>A-0002</td>
                   <td>Ali bin Abi Thalib</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>002.K-004</td>
+                  <td>31 Dec 2017 <b>Jam 19:11:23</b></td>
+                  <td>28 Jan 2018</td>
+                  <td>Setiap tanggal 28</td>
+                  <td>Rp. 10.000</td>
+                  <td>9 bulan</td>
+                  <td>Rp. 90.000</td>
                 </tr>
                 <tr>
                   <td>3</td>
-                  <td>A-0003</td>
                   <td>Zaid bin Haritsah</td>
                   <td></td>
                   <td></td>
@@ -77,7 +76,6 @@
                 </tr>
                 <tr>
                   <td>4</td>
-                  <td>A-0004</td>
                   <td>Abu Bakar ash-Shiddiq</td>
                   <td></td>
                   <td></td>
@@ -88,7 +86,6 @@
                 </tr>
                 <tr>
                   <td>5</td>
-                  <td>A-0005</td>
                   <td>Umar bin Khattab</td>
                   <td></td>
                   <td></td>
@@ -99,7 +96,6 @@
                 </tr>
                 <tr>
                   <td>6</td>
-                  <td>A-0006</td>
                   <td>Utsman bin Affan</td>
                   <td></td>
                   <td></td>
@@ -110,7 +106,6 @@
                 </tr>
                 <tr>
                   <td>7</td>
-                  <td>A-0007</td>
                   <td>Abbas bin Abdul Muthalib</td>
                   <td></td>
                   <td></td>
@@ -121,7 +116,6 @@
                 </tr>
                 <tr>
                   <td>8</td>
-                  <td>A-0008</td>
                   <td>Hamzah bin Abdul Muthalib</td>
                   <td></td>
                   <td></td>
@@ -132,7 +126,6 @@
                 </tr>
                 <tr>
                   <td>9</td>
-                  <td>A-0009</td>
                   <td>Ja'far bin Abi Thalib</td>
                   <td></td>
                   <td></td>
@@ -143,7 +136,6 @@
                 </tr>
                 <tr>
                   <td>10</td>
-                  <td>A-00010</td>
                   <td>Khalid bin Walid</td>
                   <td></td>
                   <td></td>
