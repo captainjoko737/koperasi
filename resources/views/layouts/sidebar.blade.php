@@ -38,8 +38,8 @@
           </a>
           <ul class="treeview-menu">
             <!-- <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Diklat</a></li> -->
-            <li><a href="{{ route('DataSimpananWajib') }}"><i class="fa fa-circle-o"></i> Data Simpanan Wajib</a></li>
-            <li><a href="{{ route('TunggakanSimpananWajib') }}"><i class="fa fa-circle-o"></i> Tunggakan Simpanan Wajib</a></li>
+            <li><a href="{{ route('DataSimpananAnggota') }}"><i class="fa fa-circle-o"></i> Data Simpanan Anggota</a></li>
+            <li><a href="{{ route('DaftarTunggakan') }}"><i class="fa fa-circle-o"></i> Daftar Tunggakan</a></li>
             <li><a href="{{ route('JenisSimpanan') }}"><i class="fa fa-circle-o"></i> Jenis Simpanan</a></li>
           </ul>
         </li>
@@ -53,7 +53,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('DataPinjaman') }}"><i class="fa fa-circle-o"></i>Data Pinjaman</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i>Angsuran Tunggakan</a></li>
+            <li><a href="{{ route('AngsuranTunggakan') }}"><i class="fa fa-circle-o"></i>Angsuran Tunggakan</a></li>
           </ul>
         </li>
 

@@ -41,15 +41,15 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>A-024</td>
-                  <td>Bilal bin Rabah</td>
-                  <td>,0000-00-00</td>
-                  <td>Laki-laki</td> 
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>Ketua</td>
+                  <td></td>
+                  <td></td> 
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 </tbody>
                 <tfoot>

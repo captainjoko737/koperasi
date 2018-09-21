@@ -5,13 +5,13 @@
 
 <section class="content-header">
       <h1>
-        Data Pinjaman
+         Daftar Tunggakan 
         
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"> Dashboard</a></li>
-        <li><a href="#">Pinjaman</a></li>
-        <li class="active">Data Pinjaman</li>
+        <li><a href="#">Simpanan</a></li>
+        <li class="active"> Daftar Tunggakan  </li>
       </ol>
     </section>
 
@@ -21,7 +21,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Daftar Peminjam</h3>
+              <h3 class="box-title">Daftar Tunggakan</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -29,11 +29,16 @@
                 <thead>
                 <tr>
                   <th>#</th>
-                  <th>Nama Peminjam</th>
-                  <th>Total Plafon</th>
-                  <th>Total Jasa Terhitung</th>
-                  <th>Total Bayar</th>
-                  <th>Sisa Plafon</th>
+                  <th>Nama Nasabah</th>
+                  <th>No.Rek</th>
+                  <th>Tanggal Registrasi</th>
+                  <th>Transaksi Terakhir</th>
+                  <th>Transaksi Selanjutnya</th>
+                  <th>Tanggal Tagihan</th>
+                  <th>Besaran Bulanan</th>
+                  <th>Tunggakan Wajib</th>
+                  <th>Tunggakan Pokok Angsuran</th>
+                  <th>Jumlah</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -44,6 +49,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -52,6 +62,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -60,7 +75,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -69,7 +88,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -78,7 +101,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -87,7 +114,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -96,7 +127,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -105,7 +140,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -114,7 +153,11 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
                   <td></td>
@@ -123,18 +166,26 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
-
                 </tbody>
                 <tfoot>
                 <tr>
                   <th>#</th>
-                  <th>Nama Peminjam</th>
-                  <th>Total Plafon</th>
-                  <th>Total Jasa Terhitung</th>
-                  <th>Total Bayar</th>
-                  <th>Sisa Plafon</th>
+                  <th>Nama Nasabah</th>
+                  <th>No.Rek</th>
+                  <th>Tanggal Registrasi</th>
+                  <th>Transaksi Terakhir</th>
+                  <th>Transaksi Selanjutnya</th>
+                  <th>Tanggal Tagihan</th>
+                  <th>Besaran Bulanan</th>
+                  <th>Tunggakan Wajib</th>
+                  <th>Tunggakan Pokok Angsuran</th>
+                  <th>Jumlah</th>
                 </tr>
                 </tfoot>
               </table>

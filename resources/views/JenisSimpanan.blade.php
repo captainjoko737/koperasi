@@ -38,92 +38,44 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>001</td>
-                  <td>Simpanan Pokok</td>
-                  <td>SP</td>
-                  <td>Simpanan yang dibayarkan pada saat pertama kali menjadi anggota koperas</td>
-                  <td>0 %</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>002</td>
-                  <td>Simpanan Wajib</td>
-                  <td>SW</td>
-                  <td>Simpanan yang dibayarkan setiap bulan</td>
-                  <td>0 %</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>3</td>
-                  <td>003</td>
-                  <td>Simpanan Sukarela</td>
-                  <td>SS</td>
-                  <td>Simpanan yang bisa dibayar kapan saja</td>
-                  <td>0 %</td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>4</td>
-                  <td>004</td>
-                  <td>Harkop</td>
-                  <td>SH</td>
                   <td></td>
-                  <td>0 %</td>
-                  
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>5</td>
-                  <td>005</td>
-                  <td>Simpanan Wajib Khusus</td>
-                  <td>SWK</td>
-                  <td></td>
-                  <td></td>
-                  
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>006</td>
-                  <td>Sukarela Khusus</td>
-                  <td>SK</td>
-                  <td></td>
-                  <td></td>
-                  
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>007</td>
                   <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>008</td>
                   <td></td>
                   <td></td>
-                  <td></td>
-                  <td></td>
-                  
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>009</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>0010</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  
                 </tr>
                 </tbody>
                 <tfoot>

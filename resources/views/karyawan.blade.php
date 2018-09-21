@@ -39,24 +39,24 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Abu Bakar</td>
-                  <td>,0000-00-00</td>
-                  <td>Laki-laki</td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>Anggota</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                  <td>2</td>
-                  <td>Hamzah</td>
-                  <td>,0000-00-00</td>
-                  <td>Laki-laki</td>
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td>Non Anggota</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 </tbody>
                 <tfoot>

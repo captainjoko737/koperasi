@@ -39,10 +39,10 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>1</td>
-                  <td>Ridwan</td>
-                  <td>,0000-00-00</td>
-                  <td>Laki-laki</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
