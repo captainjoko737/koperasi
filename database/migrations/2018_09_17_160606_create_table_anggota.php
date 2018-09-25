@@ -16,14 +16,14 @@ class CreateTableAnggota extends Migration
         Schema::create('anggota', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nama');
-            $table->string('TTL');
+            $table->string('ttl');
             $table->string('jenis_kelamin');
             $table->string('alamat');
             $table->string('telepon');
             $table->string('email');
             $table->string('status');
         });
-        //
+        
     }
 
     /**
@@ -33,6 +33,6 @@ class CreateTableAnggota extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('anggota');
     }
 }

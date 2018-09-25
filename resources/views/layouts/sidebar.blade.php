@@ -75,7 +75,7 @@
             <i class="fa fa-gear"></i> <span>Pengaturan</span>
           </a>
 
-        <li class="{{ Request::segment(1) === 'logout' ? 'active' : '' }} " ><a href="{{ url('/auth/logout') }}"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+        <li class="{{ Request::segment(1) === 'logout' ? 'active' : '' }} " ><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>
       
     </section>
