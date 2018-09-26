@@ -21,14 +21,19 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Daftar Anggota</h3>
+              <h3 class="box-title">Daftar Anggota</h3> 
+              <div class="box-footer clearfix no-border">
+              <a  href="{{ route('anggota.add') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
+            </div>
+            <div class="box-footer clearfix no-border">
+              <a  href="{{ route('anggota.edit') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Edit</a>
+            </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>#</th>
                   <th>Nama</th>
                   <th>TTL</th>
                   <th>Jenis Kelamin</th>
@@ -36,113 +41,25 @@
                   <th>Telepon</th>
                   <th>Email</th>
                   <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                @foreach ($result as $key => $value)
+                  <tr>
+                    <td>{{ $value['nama'] }}</td>
+                    <td>{{ $value['ttl'] }}</td>
+                    <td>{{ $value['jenis_kelamin'] }}</td>
+                    <td>{{ $value['alamat'] }}</td>
+                    <td>{{ $value['telepon'] }}</td>
+                    <td>{{ $value['email'] }}</td>
+                    <td>{{ $value['status'] }}</td>
+                    <td></td>
+                  </tr>
+                @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>#</th>
                   <th>Nama</th>
                   <th>TTL</th>
                   <th>Jenis Kelamin</th>
@@ -150,6 +67,7 @@
                   <th>Telepon</th>
                   <th>Email</th>
                   <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
                 </tfoot>
               </table>

@@ -28,7 +28,6 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
-                  <th>#</th>
                   <th>Kode</th>
                   <th>Nama</th>
                   <th>Kode Print</th>
@@ -43,44 +42,10 @@
                   <td></td>
                   <td></td>
                   <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
                 </tr>
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>#</th>
                   <th>Kode</th>
                   <th>Nama</th>
                   <th>Kode Print</th>

@@ -25,38 +25,43 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>#</th>
                   <th>Nama</th>
                   <th>TTL</th>
                   <th>Jenis Kelamin</th>
                   <th>Alamat</th>
                   <th>Telepon</th>
                   <th>Email</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
+                @foreach ($result as $key => $value)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ $value['nama'] }}</td>
+                  <td>{{ $value['ttl'] }}</td>
+                  <td>{{ $value['jenis_kelamin'] }}</td>
+                  <td>{{ $value['alamat'] }}</td>
+                  <td>{{ $value['telepon'] }}</td>
+                  <td>{{ $value['email'] }}</td>
                   <td></td>
                   <td></td>
                 </tr>
+                @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>#</th>
                   <th>Nama</th>
                   <th>TTL</th>
                   <th>Jenis Kelamin</th>
                   <th>Alamat</th>
                   <th>Telepon</th>
                   <th>Email</th>
+                  <th>Status</th>
+                  <th>Aksi</th>
                 </tr>
                 </tfoot>
               </table>
