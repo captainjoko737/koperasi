@@ -22,6 +22,7 @@ class CreateTableAnggota extends Migration
             $table->string('telepon');
             $table->string('email');
             $table->string('status');
+            $table->timestamps();
         });
         
     }

@@ -18,6 +18,7 @@ class CreateSimpananPokok extends Migration
             $table->integer('id_user')->unsigned();
             $table->integer('jumlah');
             $table->date('tanggal');
+            $table->timestamps();
 
             $table->foreign('id_user')
               ->references('id')->on('anggota')
