@@ -8,6 +8,7 @@ class MAnggota extends Model
 {
 	protected $table = "anggota";
 	protected $primaryKey = "id";
-	protected $fillable = ['nama','ttl','jenis_kelamin','alamat','telepon','email','status'];
+	protected $fillable = ['id', 'nama','ttl','jenis_kelamin','alamat','telepon','email','status'];
+
     
 }

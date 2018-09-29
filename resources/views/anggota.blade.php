@@ -25,9 +25,7 @@
               <div class="box-footer clearfix no-border">
               <a  href="{{ route('anggota.add') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
             </div>
-            <div class="box-footer clearfix no-border">
-              <a  href="{{ route('anggota.edit') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Edit</a>
-            </div>
+            
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -54,7 +52,12 @@
                     <td>{{ $value['telepon'] }}</td>
                     <td>{{ $value['email'] }}</td>
                     <td>{{ $value['status'] }}</td>
-                    <td></td>
+                    <td>
+                    
+                       <a href="{{ route('anggota.edit', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a> 
+                        <a href="{{ route('anggota.delete', ['id' => $value['id']]) }}"><i class="fa fa-trash-o"></i></a> 
+                      
+                    </td>
                   </tr>
                 @endforeach
                 </tbody>

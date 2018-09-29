@@ -27,35 +27,36 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form">
+            <form role="form" action="{{ route('anggota.save') }}">
+              <input type="text" hidden placeholder="Masukkan Nama" name="id" value="{{ $result['id'] }}">
               <div class="box-body">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Nama</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Nama" name="nama" required="required">
+                  <input type="text" class="form-control" placeholder="Masukkan Nama" name="nama" required="required" value="{{ $result['nama'] }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">TTL</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Tempat Tanggal Lahir" name="ttl" required="required">
+                  <input type="text" class="form-control" placeholder="Masukkan Tempat Tanggal Lahir" name="ttl" required="required" value="{{ $result['ttl'] }}">
                 </div>
                 <div class="form-group">
                   <label>Jenis Kelamin</label>
                   <select class="form-control" name="jenis_kelamin" required="required">
                     <option>-</option>
-                    <option>Laki-laki</option>
-                    <option>Perempuan</option>
+                    <option value="Laki-laki">Laki-laki</option>
+                    <option value="Perempuan">Perempuan</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Alamat</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat" required="required">
+                  <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat" required="required" value="{{ $result['alamat'] }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Telepon</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Telepon" name="telepon" required="required">
+                  <input type="text" class="form-control" placeholder="Masukkan Telepon" name="telepon" required="required" value="{{ $result['telepon'] }}">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Email</label>
-                  <input type="email" class="form-control" placeholder="Masukkan Email" name="email" required="required">
+                  <input type="email" class="form-control" placeholder="Masukkan Email" name="email" required="required" value="{{ $result['email'] }}">
                 </div>
                 <div class="form-group">
                   <label>Status</label>
@@ -71,7 +72,8 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="{{ route('anggota') }}" type="button" class="btn btn-primary">Back</a>
+                <button type="submit" class="btn btn-primary pull-right">Save</button>
               </div>
             </form>
           </div>

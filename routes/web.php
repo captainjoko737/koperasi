@@ -20,6 +20,8 @@ Route::get('/anggota', 'Anggota@index')->name('anggota');
 Route::get('/anggota/add', 'Anggota@add')->name('anggota.add');
 Route::get('/anggota/create', 'Anggota@create')->name('anggota.create');
 Route::get('/anggota/edit', 'Anggota@edit')->name('anggota.edit');
+Route::get('/anggota/save', 'Anggota@save')->name('anggota.save');
+Route::get('/anggota/delete', 'Anggota@drop')->name('anggota.delete');
 
 
 Route::get('/pengurus', 'Pengurus@index')->name('pengurus');
