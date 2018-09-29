@@ -5,12 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\MAnggota;
+use App\MSimpananPokok;
+use App\MConfig;
 
 class Anggota extends Controller
 {
 	public function index() {
 
-		$anggota = MAnggota::all();
+		$anggota = MAnggota::where('status', '!=', 'Calon Anggota')->get();
+		// return json_encode($anggota);
+		foreach ($anggota as $key => $value) {
+			$simpananPokok = MSimpananPokok::where('id_user', $value['id'])->first();
+			$anggota[$key]['simpananPokok'] = $simpananPokok;
+		}
+
 		// return $anggota;
 		$data['result'] = $anggota;
 		return view('anggota', $data);
@@ -18,7 +26,8 @@ class Anggota extends Controller
 
 	public function add() {
 
-		return view('anggota.add');
+		$data['simpanan_pokok'] = MConfig::where('key', 'simpanan_pokok')->first();
+		return view('anggota.add', $data);
 
 	}
 
@@ -36,6 +45,13 @@ class Anggota extends Controller
 		$anggota->status = $request->status;
 
 		$anggota->save();
+
+		$simpananPokok = new MSimpananPokok;
+		$simpananPokok->id_user = $anggota->id;
+		$simpananPokok->tanggal = $request->tanggal;
+		$simpananPokok->jumlah = $request->jumlah;
+
+		$simpananPokok->save();
 
 		return redirect()->route('anggota');
 	}

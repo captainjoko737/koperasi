@@ -34,6 +34,8 @@
                   <th>Alamat</th>
                   <th>Telepon</th>
                   <th>Email</th>
+                  <th>Simpanan Pokok</th>
+                  <th>Tanggal</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
@@ -47,8 +49,13 @@
                   <td>{{ $value['alamat'] }}</td>
                   <td>{{ $value['telepon'] }}</td>
                   <td>{{ $value['email'] }}</td>
-                  <td></td>
-                  <td></td>
+                  <td>Rp. {{ number_format($value['simpananPokok']['jumlah'], 2) }}</td>
+                  <td>{{ $value['simpananPokok']['tanggal'] }}</td>
+                  <td>{{ $value['status'] }}</td>
+                  <td>
+                      <a href="{{ route('anggota.edit', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a> 
+                      <a href="{{ route('anggota.delete', ['id' => $value['id']]) }}"><i class="fa fa-trash-o"></i></a>     
+                  </td>
                 </tr>
                 @endforeach
                 </tbody>
@@ -60,6 +67,8 @@
                   <th>Alamat</th>
                   <th>Telepon</th>
                   <th>Email</th>
+                  <th>Simpanan Pokok</th>
+                  <th>Tanggal</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
