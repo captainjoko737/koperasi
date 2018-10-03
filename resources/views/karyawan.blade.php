@@ -20,7 +20,11 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Daftar Karyawan</h3>
+              <h3 class="box-title">Karyawan</h3> 
+              <div class="box-footer clearfix no-border">
+              <a  href="{{ route('Karyawan.add') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
+            </div>
+            
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -34,18 +38,27 @@
                   <th>Telepon</th>
                   <th>Email</th>
                   <th>Keterangan</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                @foreach ($result as $key => $value)
+                  <tr>
+                    <td>{{ $value['nama'] }}</td>
+                    <td>{{ $value['ttl'] }}</td>
+                    <td>{{ $value['jenis_kelamin'] }}</td>
+                    <td>{{ $value['alamat'] }}</td>
+                    <td>{{ $value['telepon'] }}</td>
+                    <td>{{ $value['email'] }}</td>
+                    <td>{{ $value['status'] }}</td>
+                    <td>
+                    
+                        <a href="{{ route('Karyawan.edit', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a> 
+                        <a href="{{ route('Karyawan.delete', ['id' => $value['id']]) }}"><i class="fa fa-trash-o"></i></a> 
+                      
+                    </td>
+                  </tr>
+                @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
@@ -56,6 +69,7 @@
                   <th>Telepon</th>
                   <th>Email</th>
                   <th>Keterangan</th>
+                  <th>Aksi</th>
                 </tr>
                 </tfoot>
               </table>

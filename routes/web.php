@@ -26,6 +26,24 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/anggota/save', 'Anggota@save')->name('anggota.save');
 	Route::get('/anggota/delete', 'Anggota@drop')->name('anggota.delete');
 
+	Route::get('/CalonAnggota/edit', 'CalonAnggota@edit')->name('CalonAnggota.edit');
+	Route::get('/CalonAnggota/save', 'CalonAnggota@save')->name('CalonAnggota.save');
+
+	Route::get('/Karyawan/add', 'Karyawan@add')->name('Karyawan.add');
+	Route::get('/Karyawan/save', 'Karyawan@save')->name('Karyawan.save');
+	Route::get('/Karyawan/create', 'Karyawan@create')->name('Karyawan.create');
+	Route::get('/Karyawan/edit', 'Karyawan@edit')->name('Karyawan.edit');
+	Route::get('/Karyawan/delete', 'Karyawan@drop')->name('Karyawan.delete');
+
+	Route::get('/SimpananWajib', 'SimpananWajib@index')->name('SimpananWajib');
+	Route::get('/SimpananWajib/detail', 'SimpananWajib@detail')->name('SimpananWajib.detail');
+	Route::get('/SimpananWajib/edit', 'SimpananWajib@edit')->name('SimpananWajib.edit');
+	Route::get('/SimpananWajib/add', 'SimpananWajib@add')->name('SimpananWajib.add');
+	Route::get('/SimpananWajib/create', 'SimpananWajib@create')->name('SimpananWajib.create');
+	Route::get('/SimpananWajib/delete', 'SimpananWajib@drop')->name('SimpananWajib.delete');
+	Route::get('/SimpananWajib/save', 'SimpananWajib@save')->name('SimpananWajib.save');
+
+
 	Route::get('/pengurus', 'Pengurus@index')->name('pengurus');
 	Route::get('/karyawan', 'Karyawan@index')->name('karyawan');
 	Route::get('/CalonAnggota', 'CalonAnggota@index')->name('CalonAnggota');

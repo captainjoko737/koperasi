@@ -41,6 +41,7 @@
             <li><a href="{{ route('DataSimpananAnggota') }}"><i class="fa fa-circle-o"></i> Data Simpanan Anggota</a></li>
             <li><a href="{{ route('DaftarTunggakan') }}"><i class="fa fa-circle-o"></i> Daftar Tunggakan</a></li>
             <li><a href="{{ route('JenisSimpanan') }}"><i class="fa fa-circle-o"></i> Jenis Simpanan</a></li>
+            <li><a href="{{ route('SimpananWajib') }}"><i class="fa fa-circle-o"></i> Simpanan Wajib</a></li>
           </ul>
         </li>
 

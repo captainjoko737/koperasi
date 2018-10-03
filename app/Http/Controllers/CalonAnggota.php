@@ -22,5 +22,33 @@ class CalonAnggota extends Controller
 		$data['result'] = $CalonAnggota;
 		return view('CalonAnggota', $data);
 	}
-    //
+
+	public function edit(request $request) {
+
+		// return $request->id;
+		$anggota = MAnggota::where('id', $request->id)->first();
+		// return $anggota;
+		$data['result'] = $anggota;
+
+		return view('CalonAnggota.edit', $data);
+	}	
+
+	public function save(request $request) {
+
+		// return $request->id;
+		$anggota = MAnggota::where('id', $request->id)->first();
+		// return $anggota;
+		$anggota->nama = $request->nama;
+		$anggota->ttl = $request->ttl;
+		$anggota->jenis_kelamin = $request->jenis_kelamin;
+		$anggota->alamat = $request->alamat;
+		$anggota->telepon = $request->telepon;
+		$anggota->email = $request->email;
+		$anggota->status = $request->status;
+
+		$anggota->save();
+
+		return redirect()->route('CalonAnggota');
+	}
+    
 }
