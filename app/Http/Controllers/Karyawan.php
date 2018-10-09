@@ -14,13 +14,12 @@ class Karyawan extends Controller
 	public function index() {
 
 		$karyawan = MAnggota::where('status', 'Karyawan')->get();
-		// return json_encode($anggota);
+		
 		foreach ($karyawan as $key => $value) {
 			$simpananPokok = MSimpananPokok::where('id_user', $value['id'])->first();
 			$karyawan[$key]['simpananPokok'] = $simpananPokok;
 		}
 
-		// return $karyawan;
 		$data['result'] = $karyawan;
 		return view('karyawan', $data);
 	}
@@ -33,7 +32,6 @@ class Karyawan extends Controller
 
 	public function create(request $request) {
 
-		// return $request->all();
 		$anggota = new MAnggota;
 
 		$anggota->nama = $request->nama;
@@ -42,7 +40,7 @@ class Karyawan extends Controller
 		$anggota->alamat = $request->alamat;
 		$anggota->telepon = $request->telepon;
 		$anggota->email = $request->email;
-		$anggota->status = 'Karyawan';
+		$anggota->status = 'aktif';
 
 		$anggota->save();
 
@@ -99,12 +97,7 @@ class Karyawan extends Controller
 
 	public function drop(request $request) {
 
-		// return $request->all();
-
-
 		$data = MAnggota::where('id', $request->id)->first();
-
-		// return $data;
 
 		$data->delete();
 
