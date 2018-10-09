@@ -23,8 +23,8 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('anggota') }}"><i class="fa fa-circle-o"></i> Anggota</a></li>
-            <li><a href="{{ route('pengurus') }}"><i class="fa fa-circle-o"></i> Pengurus</a></li>
-            <li><a href="{{ route('karyawan') }}"><i class="fa fa-circle-o"></i> Karyawan</a></li>
+            <li><a href="{{ route('pengurus') }}"><i class="fa fa-circle-o"></i> Accounting</a></li>
+            <li><a href="{{ route('karyawan') }}"><i class="fa fa-circle-o"></i> Pengurus</a></li>
             <li><a href="{{ route('CalonAnggota') }}"><i class="fa fa-circle-o"></i> Calon Anggota</a></li>
           </ul>
         </li>

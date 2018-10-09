@@ -33,13 +33,9 @@
                 <thead>
                 <tr>
                   <th>Nama</th>
-                  <th>TTL</th>
-                  <th>Jenis Kelamin</th>
-                  <th>Alamat</th>
                   <th>Telepon</th>
                   <th>Email</th>
-                  <th>Simpanan Pokok</th>
-                  <th>Tanggal</th>
+                  <th>Simpanan Wajib</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
@@ -48,19 +44,12 @@
                   @foreach ($result as $key => $value)
                   <tr>
                     <td>{{ $value['nama'] }}</td>
-                    <td>{{ $value['ttl'] }}</td>
-                    <td>{{ $value['jenis_kelamin'] }}</td>
-                    <td>{{ $value['alamat'] }}</td>
                     <td>{{ $value['telepon'] }}</td>
                     <td>{{ $value['email'] }}</td>
-                    <td>Rp. {{ number_format($value['simpananPokok']['jumlah'], 2) }}</td>
-                    <td>{{ $value['simpananPokok']['tanggal'] }}</td>
+                    <td>Rp. {{ number_format($value['simpanan_wajib'], 2) }}</td>
                     <td>{{ $value['status'] }}</td>
                     <td>
-                    
                         <a href="{{ route('SimpananWajib.detail', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a> 
-                        
-                      
                     </td>
                   </tr>
                 @endforeach
@@ -68,13 +57,9 @@
                 <tfoot>
                 <tr>
                   <th>Nama</th>
-                  <th>TTL</th>
-                  <th>Jenis Kelamin</th>
-                  <th>Alamat</th>
                   <th>Telepon</th>
                   <th>Email</th>
-                   <th>Simpanan Pokok</th>
-                  <th>Tanggal</th>
+                  <th>Simpanan Wajib</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>

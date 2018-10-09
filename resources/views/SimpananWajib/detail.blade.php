@@ -24,7 +24,8 @@
             <div class="box-header">
               <h3 class="box-title"></h3> 
               <div class="box-footer clearfix no-border">
-              <a  href="{{ route('SimpananWajib.add') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
+                <a  href="{{ route('SimpananWajib') }}"  type="button" class="btn btn-success pull-left"><i class="fa fa-arrow-left"></i> Back</a>
+              <a  href="{{ route('SimpananWajib.add', ['id' => $id]) }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
             </div>
               
             
@@ -43,15 +44,14 @@
                 <tbody>
                   @foreach ($result as $key => $value)
                   <tr>
-                    <td>{{ $value['id_user'] }}</td>
+                    <td>{{ $value['nama'] }}</td>
                     <td>Rp. {{ number_format($value['jumlah'], 2) }}</td>
                     <td>{{ $value['tanggal'] }}</td>
                     <td>
                     
-                        <a href="{{ route('SimpananWajib.edit', ['id_user' => $value['id_user']]) }}"><i class="fa fa-edit"></i></a> 
-                        <a href="{{ route('SimpananWajib.delete', ['id_user' => $value['id_user']]) }}"><i class="fa fa-trash-o"></i></a>
+                        <!-- <a href="{{ route('SimpananWajib.edit', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a>  -->
+                        <a href="{{ route('SimpananWajib.delete', ['id' => $value['id'], 'id_user' => $id]) }}"><i class="fa fa-trash-o"></i></a>
                         
-                      
                     </td>
                   </tr>
                 @endforeach

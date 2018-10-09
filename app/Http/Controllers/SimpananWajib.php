@@ -14,28 +14,32 @@ class SimpananWajib extends Controller
 	public function index() {
 
 		$anggota = MAnggota::where('status', '!=', 'Calon Anggota')->get();
-		// return json_encode($anggota);
+		
 		foreach ($anggota as $key => $value) {
-			$simpananPokok = MSimpananPokok::where('id_user', $value['id'])->first();
-			$anggota[$key]['simpananPokok'] = $simpananPokok;
+			$simpananWajib = MSimpananWajib::where('id_user', $value['id'])->get();
+
+			$sw = 0;
+			foreach ($simpananWajib as $keys => $values) {
+				$sw += $values['jumlah'];
+			}
+
+			$anggota[$key]['simpanan_wajib'] += $sw;
 		}
 
-		// return $anggota;
 		$data['result'] = $anggota;
+
 		return view('SimpananWajib', $data);
 	}
 
 	public function detail(request $request) {
 
-		$anggota = MSimpananWajib::where('id_user', '=', $request->id)->get();
-		// return json_encode($anggota);
-		// foreach ($anggota as $key => $value) {
-		// 	$simpananWajib = MSimpananPokok::where('id_user', $value['id'])->first();
-		// 	$anggota[$key]['simpananPokok'] = $simpananPokok;
-		// }
-
-		// return $anggota;
+		$anggota = MSimpananWajib::where('id_user', '=', $request->id)
+			->join('anggota', 'anggota.id', '=', 'simpanan_wajib.id_user')
+			->select('simpanan_wajib.*', 'anggota.nama')
+			->get();
+// return $anggota;
 		$data['result'] = $anggota;
+		$data['id'] = $request->id;
 		 // return $data;
 		return view('SimpananWajib.detail', $data);
 	}
@@ -50,9 +54,15 @@ class SimpananWajib extends Controller
 		return view('SimpananWajib.edit', $data);	
 	}
 
-	public function add() {
+	public function add(request $request) {
+// return $request->all();
 
-		$data['simpanan_pokok'] = MSimpananWajib::where('id_user', 'simpanan_pokok')->first();
+		$anggota = MAnggota::where('id', $request->id)->first();
+
+		// return $anggota;
+		$data['anggota'] = $anggota;
+		$data['simpanan_wajib'] = MConfig::where('key', 'simpanan_wajib')->first();
+// return $data;
 		return view('SimpananWajib.add', $data);
 
 	}
@@ -75,7 +85,6 @@ class SimpananWajib extends Controller
 
 	public function save(request $request) {
 
-		  // return $request->id;
 		$simpananWajib = MSimpananWajib::where('jumlah', $request->jumlah)->first();
 		   return $simpananWajib;
 		
@@ -90,12 +99,7 @@ class SimpananWajib extends Controller
 
 	public function drop(request $request) {
 
-		// return $request->all();
-
-
-		$data = MSimpananWajib::where('id_user', $request->id_user)->first();
-
-		// return $data;
+		$data = MSimpananWajib::where('id', $request->id)->first();
 
 		$data->delete();
 
