@@ -4,13 +4,13 @@
 
 <section class="content-header">
       <h1>
-        Karyawan
+        Pengurus
         
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"> Dashboard</a></li>
         <li><a href="#">Data Master</a></li>
-        <li class="active">Karyawan</li>
+        <li class="active">Pengurus</li>
       </ol>
     </section>
 
@@ -20,7 +20,7 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Karyawan</h3> 
+              <h3 class="box-title">Daftar Pengurus</h3> 
               <div class="box-footer clearfix no-border">
               <a  href="{{ route('Karyawan.add') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
             </div>
