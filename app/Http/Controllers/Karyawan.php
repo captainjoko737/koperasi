@@ -8,11 +8,12 @@ use App\MAnggota;
 use App\MSimpananPokok;
 use App\MConfig;
 use App\User;
+use Auth;
 
 class Karyawan extends Controller
 {
 	public function index() {
-
+		
 		$karyawan = MAnggota::where('status', 'Karyawan')->get();
 		
 		foreach ($karyawan as $key => $value) {
