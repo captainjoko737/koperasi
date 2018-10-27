@@ -28,6 +28,7 @@
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{asset('public/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
   <link rel="stylesheet" href="{{asset('public/admin/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{asset('public/css/select2.css')}}">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -35,7 +36,15 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+<style type="text/css">
+.selectRow {
+    display : block;
+    padding : 20px;
+}
+.select2-container {
+    width: 200px;
+}
+</style>
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -108,6 +117,8 @@
 <script src="{{asset('public/admin/dist/js/demo.js')}}"></script>
 <script src="{{asset('public/admin/bower_components/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('public/admin/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('public/js/select2.js')}}"></script>
+
 <script>
   $(function () {
     $('#example1').DataTable()
@@ -120,6 +131,26 @@
       'autoWidth'   : false
     })
   })
+
+  // Setting default configuration here or you can set through configuration object as seen below
+  $.fn.select2.defaults = $.extend($.fn.select2.defaults, {
+      allowClear: true, // Adds X image to clear select
+      closeOnSelect: true, // Only applies to multiple selects. Closes the select upon selection.
+      placeholder: 'Select...',
+      minimumResultsForSearch: 15 // Removes search when there are 15 or fewer options
+  });
+
+  $(document).ready(
+
+  function () {
+
+      // Single select example if using params obj or configuration seen above
+      var configParamsObj = {
+          placeholder: 'Select an option...', // Place holder text to place in the select
+          minimumResultsForSearch: 3 // Overrides default of 15 set above
+      };
+      $("#singleSelectExample").select2(configParamsObj);
+  });
 </script>
 </body>
 </html>

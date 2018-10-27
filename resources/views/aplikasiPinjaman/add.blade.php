@@ -5,7 +5,7 @@
 
 <section class="content-header">
       <h1>
-        Tambah Simpanan Wajib
+        Tambah Aplikasi Pinjaman
         
       </h1>
       <ol class="breadcrumb">
@@ -27,29 +27,37 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="{{ route('SimpananWajib.create') }}">
-              <input hidden type="text" id="id_user" name="id_user" value="{{ $anggota['id'] }}">
+            <form role="form" action="{{ route('aplikasi_pinjaman.create') }}">
+              <input hidden type="text" id="id_user" name="id_user" value="">
               <div class="box-body">
+                <label>Nama Peminjam</label>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Nama</label>
+                  <select id="singleSelectExample" name="id_user">
+                    <option></option>
+                    @foreach ($anggota as $key => $value)
+                      <option value="{{ $value['id'] }}">{{ $value['nama'] }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Jumlah Pinjaman</label>
+                  <input type="text" class="form-control" placeholder="Masukkan Jumlah yang diajukan" name="jumlah_diajukan" required="required" value="">
+                </div>
+                <label for="exampleInputPassword1">Tenor / Lama Pinjaman</label>
+                <div class="form-group">
                   
-                  <input type="text" class="form-control" placeholder="Masukkan Nama" name="nama" readonly required="required" value="{{ $anggota['nama'] }}">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Jumlah Simpanan Wajib</label>
-                  <input type="text" class="form-control" placeholder="Masukkan Jumlah Simpanan Wajib" readonly name="jumlah" required="required" value="{{ $simpanan_wajib['value'] }}">
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Tanggal</label>
-                  <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="tanggal" required="required">
-                </div>
-                
-                
+                  <select id="singleSelectExamples" name="bulan_cicilan_diajukan" required="required">
+                    @foreach ($tenor as $key => $value)
+                      <option value="{{ $value }}">{{ $value }}</option>
+                    @endforeach
+                  </select>
+                </div>      
               </div>
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('SimpananWajib.detail', ['id' => $anggota['id']]) }}" type="button" class="btn btn-primary">Back</a>
+                <a href="{{ route('aplikasi_pinjaman') }}" type="button" class="btn btn-primary">Back</a>
                 <button type="submit" class="btn btn-primary pull-right">Submit</button>
               </div>
              

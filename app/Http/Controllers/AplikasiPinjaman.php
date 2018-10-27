@@ -28,7 +28,10 @@ class AplikasiPinjaman extends Controller
 
     public function detail(request $request) {
 
-    	$aplikasiPinjaman = MAplikasiPinjaman::where('id', $request['id'])->first();
+    	$aplikasiPinjaman = MAplikasiPinjaman::where('aplikasi_pinjaman.id', $request['id'])
+            ->join('anggota', 'anggota.id', '=', 'aplikasi_pinjaman.id_user')
+            ->select('aplikasi_pinjaman.*', 'anggota.nama')
+            ->first();
 
     	$jumlahPinjaman = $aplikasiPinjaman['jumlah_diajukan'];
     	$bulanCicilanDiajukan = $aplikasiPinjaman['bulan_cicilan_diajukan'];
@@ -83,9 +86,67 @@ class AplikasiPinjaman extends Controller
 
 		array_push($result, $sum);
 
+        $tenor = [];
+        for ($i=1; $i <= 60; $i++) { 
+            array_push($tenor, $i);
+        }
+        $data['tenor'] = $tenor;
+
     	$data['result'] = $result;
+        $data['aplikasi_pinjaman'] = $aplikasiPinjaman;
     	
 		return view('aplikasiPinjaman.detail', $data);
 
     }
+
+    public function add() {
+
+        $data['anggota'] = MAnggota::where('status', '=', 'aktif')->get();
+
+        $tenor = [];
+        for ($i=1; $i <= 60; $i++) { 
+            array_push($tenor, $i);
+        }
+        $data['tenor'] = $tenor;
+        
+        return view('aplikasiPinjaman.add', $data);
+
+    }
+
+    public function create(request $request) {
+
+        // return $request->all();
+        $aplikasiPinjaman = new MAplikasiPinjaman;
+
+        $aplikasiPinjaman->id_user = $request->id_user;
+        $aplikasiPinjaman->jumlah_diajukan = $request->jumlah_diajukan;
+        $aplikasiPinjaman->bulan_cicilan_diajukan = $request->bulan_cicilan_diajukan;
+        $aplikasiPinjaman->status = 'sedang di proses';
+
+        $aplikasiPinjaman->save();
+
+        return redirect()->route('aplikasi_pinjaman');
+    }
+
+    public function tangani(request $request) {
+
+        $aplikasiPinjaman = MAplikasiPinjaman::find($request->id);
+
+        if ($request->status == 'disetujui') {
+            $aplikasiPinjaman->jumlah_disetujui = $request->jumlah_disetujui;
+            $aplikasiPinjaman->bulan_cicilan_disetujui = $request->bulan_cicilan_disetujui;
+            $aplikasiPinjaman->status = 'disetujui';
+
+            $aplikasiPinjaman->save();
+        }else{
+            $aplikasiPinjaman->status = 'tidak disetujui';
+
+            $aplikasiPinjaman->save();
+        }
+
+        
+
+        return redirect()->route('aplikasi_pinjaman');
+    }
+
 }
