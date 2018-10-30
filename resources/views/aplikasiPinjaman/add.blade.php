@@ -10,9 +10,9 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"> Dashboard</a></li>
-        <li><a href="#">Simpanan</a></li>
-        <li><a href="#">Detail Simpanan Wajib</a></li>
-        <li class="active">Tambah Simpanan Wajib</li>
+        <li><a href="#">Pinjaman</a></li>
+        <li><a href="#">Aplikasi Pinjaman</a></li>
+        <li class="active">Tambah Aplikasi Pinjaman</li>
       </ol>
     </section>
 
