@@ -33,26 +33,35 @@ class AplikasiPinjaman extends Controller
             ->select('aplikasi_pinjaman.*', 'anggota.nama')
             ->first();
 
-    	$jumlahPinjaman = $aplikasiPinjaman['jumlah_diajukan'];
-    	$bulanCicilanDiajukan = $aplikasiPinjaman['bulan_cicilan_diajukan'];
+        if ($aplikasiPinjaman['jumlah_disetujui'] == 0) {
+            $jumlahPinjaman = $aplikasiPinjaman['jumlah_diajukan'];
+        }else{
+            $jumlahPinjaman = $aplikasiPinjaman['jumlah_disetujui'];
+        }
 
+        if ($aplikasiPinjaman['bulan_cicilan_disetujui'] == NULL) {
+            $bulanCicilan = $aplikasiPinjaman['bulan_cicilan_diajukan'];
+        }else{
+            $bulanCicilan = $aplikasiPinjaman['bulan_cicilan_disetujui'];
+        }
+    	
     	$sisaPinjaman = $jumlahPinjaman;
 
     	$result = [];
-    	for ($i=0; $i <= $bulanCicilanDiajukan; $i++) { 
+    	for ($i=0; $i <= $bulanCicilan; $i++) { 
 
     		if ($i != 0) {
 
     			$angsuranBunga = $sisaPinjaman * 0.3 * 0.0833;
 
-    			$sisaPinjaman = $sisaPinjaman - $jumlahPinjaman / $bulanCicilanDiajukan;
+    			$sisaPinjaman = $sisaPinjaman - $jumlahPinjaman / $bulanCicilan;
 
-    			$total_angsuran = $jumlahPinjaman / $bulanCicilanDiajukan + $this->rounding($angsuranBunga);
+    			$total_angsuran = $jumlahPinjaman / $bulanCicilan + $this->rounding($angsuranBunga);
 
     			$bulanan = [
 	    			'bulan' 		 => $i,
 	    			'angsuran_bunga' => $this->rounding($angsuranBunga),
-	    			'angsuran_pokok' => $jumlahPinjaman / $bulanCicilanDiajukan,
+	    			'angsuran_pokok' => $jumlahPinjaman / $bulanCicilan,
 	    			'total_angsuran' => $total_angsuran,
 	    			'sisa_pinjaman'	 => $sisaPinjaman
 	    		];
@@ -94,7 +103,7 @@ class AplikasiPinjaman extends Controller
 
     	$data['result'] = $result;
         $data['aplikasi_pinjaman'] = $aplikasiPinjaman;
-    	
+    	// return $status_user;
 		return view('aplikasiPinjaman.detail', $data);
 
     }
