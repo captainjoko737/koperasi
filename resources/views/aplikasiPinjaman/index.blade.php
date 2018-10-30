@@ -10,8 +10,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"> Dashboard</a></li>
-        <li><a href="#">Simpanan</a></li>
-        <li class="active">Simpanan Wajib</li>
+        <li><a href="#">Pinjaman</a></li>
+        <li class="active">Aplikasi Pinjaman</li>
       </ol>
     </section>
 
@@ -33,10 +33,10 @@
                 <thead>
                 <tr>
                   <th>Nama</th>
-                  <th>jumlah diajukan</th>
-                  <th>jumlah disetujui</th>
-                  <th>bulan cicilan diajukan</th>
-                  <th>bulan cicilan disetujui</th>
+                  <th>Jumlah Diajukan</th>
+                  <th>Jumlah Disetujui</th>
+                  <th>Bulan Cicilan Diajukan</th>
+                  <th>Bulan Cicilan Disetujui</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
@@ -74,10 +74,10 @@
                 <tfoot>
                 <tr>
                   <th>Nama</th>
-                  <th>jumlah diajukan</th>
-                  <th>jumlah disetujui</th>
-                  <th>bulan cicilan diajukan</th>
-                  <th>bulan cicilan disetujui</th>
+                  <th>Jumlah Diajukan</th>
+                  <th>Jumlah Disetujui</th>
+                  <th>Bulan Cicilan Diajukan</th>
+                  <th>Bulan Cicilan Disetujui</th>
                   <th>Status</th>
                   <th>Aksi</th>
                 </tr>
