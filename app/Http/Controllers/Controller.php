@@ -38,7 +38,8 @@ class Controller extends BaseController
         }else if($hundred < 999){
             $result = $value + (1000 - $hundred);
         }
-
+// echo json_encode($result);
+// die();
         return $result;
     }
 }

@@ -106,9 +106,14 @@
 
             <p>Aplikasi Pinjaman anda telah di setujui oleh accounting dengan rincian sebagai berikut, </p>
             <p>Jika anda setuju dengan rincian sebagai berikut maka silahkan tekan tombol setuju untuk proses lebih lanjut.</p>
-            <form hidden action="{{ route('aplikasi_pinjaman.tangani') }}" id="form3">
+            <form hidden action="{{ route('aplikasi_pinjaman.proses_pinjaman') }}" id="form3">
               <input type="text" hidden id="id" class="form-control" placeholder="" name="id" readonly value="{{ $aplikasi_pinjaman['id'] }}">
-              <input type="text" hidden id="status" class="form-control" placeholder="" name="status" readonly value="tidak disetujui">
+              <input type="text" hidden id="status" class="form-control" placeholder="" name="status" readonly value="setuju">
+            </form>
+
+            <form hidden class="delete" action="{{ route('aplikasi_pinjaman.proses_pinjaman') }}" id="form4">
+              <input type="text" hidden id="id" class="form-control" placeholder="" name="id" readonly value="{{ $aplikasi_pinjaman['id'] }}">
+              <input type="text" hidden id="status" class="form-control" placeholder="" name="status" readonly value="tidak setuju">
             </form>
 
             <div class="row">
@@ -117,7 +122,7 @@
                 <button type="submit" form="form3" class="btn btn-block btn-success" value="Submit">Setuju</button>
               </div>
               <div class="col-md-3">
-                <button type="submit" form="form3" class="btn btn-block btn-danger" value="Submit">Tidak Setuju</button>
+                <button type="submit" form="form4" class="btn btn-block btn-danger" value="Submit">Tidak Setuju</button>
               </div>
             </div>
 
@@ -183,3 +188,10 @@
 
 @endsection
 
+@section('js')
+<script>
+    $(".delete").on("submit", function(){
+        return confirm("Do you want to delete this item?");
+    });
+</script>
+@endsection
