@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/aplikasi_pinjaman/proses_pinjaman', 'AplikasiPinjaman@prosesPinjaman')->name('aplikasi_pinjaman.proses_pinjaman');
 	Route::get('/aplikasi_pinjaman/edit', 'AplikasiPinjaman@edit')->name('aplikasi_pinjaman.edit');
 	Route::get('/aplikasi_pinjaman/save', 'AplikasiPinjaman@save')->name('aplikasi_pinjaman.save');
-	Route::get('/aplikasi_pinjaman/delete', 'AplikasiPinjaman@drop')->name('aplikasi_pinjaman.delete');
+	Route::get('/aplikasi_pinjaman/delete', 'AplikasiPinjaman@drops')->name('aplikasi_pinjaman.delete');
 
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

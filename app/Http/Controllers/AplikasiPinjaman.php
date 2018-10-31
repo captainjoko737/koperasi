@@ -221,6 +221,22 @@ class AplikasiPinjaman extends Controller
         
     }
 
+    public function drops(request $request) {
+
+        // return $request->all();
+
+
+        $data = MAplikasiPinjaman::where('id', $request->id)->first();
+
+        // return $data;
+
+        $data->delete();
+
+        return redirect()->route('aplikasi_pinjaman');
+    }
+
+
+
 }
 
 
