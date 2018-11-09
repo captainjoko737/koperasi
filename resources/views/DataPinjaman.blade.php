@@ -28,37 +28,78 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  
                   <th>Nama Peminjam</th>
-                  <th>Total Plafon</th>
-                  <th>Total Jasa Terhitung</th>
-                  <th>Total Bayar</th>
-                  <th>Sisa Plafon</th>
+                  <th>Jumlah Pinjaman</th>
+                  <th>Tenor</th>
+                  <th>Angsuran Ke</th>
+                  <th>Sisa Pinjaman</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
+
+                @foreach ($result as $key => $value)
+                <tr>
+                  <td>{{ $value['nama'] }}</td>
+                  <td>Rp. {{ number_format($value['jumlah_pinjaman'], 2) }}</td>
+                  <td>{{ $value['tenor'] }}</td>
+                  <td>{{ $value['angsuran_ke'] }}</td>
+                  <td>Rp. {{ number_format($value['sisa_pinjaman'], 2) }}</td>
+                  <td>
+                      <a href="{{ route('pinjaman.detail', ['id' => $value['id']]) }}"><i class="fa fa-search"></i></a> 
+                  </td>
+                </tr>
+                @endforeach
+
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Nama Peminjam</th>
+                  <th>Jumlah Pinjaman</th>
+                  <th>Tenor</th>
+                  <th>Angsuran Ke</th>
+                  <th>Sisa Pinjaman</th>
+                  <th>Aksi</th>
+                </tr>
+                </tfoot>
+              </table>
+              <!-- 
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
                 <tr>
                   
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <th>Nama Peminjam</th>
+                  <th>Jumlah Pinjaman</th>
+                  <th>Tenor</th>
+                  <th>Angsuran Ke</th>
+                  <th>Sisa Pinjaman</th>
+                  <th>Aksi</th>
                 </tr>
-                
+                </thead>
+                <tbody>
+                @foreach ($result as $key => $value)
+                <tr>
+                  <td>{{ $value['nama'] }}</td>
+                  <td>Rp. {{ number_format($value['jumlah_pinjaman'], 2) }}</td>
+                  <td>{{ $value['tenor'] }}</td>
+                  <td>{{ $value['angsuran_ke'] }}</td>
+                  <td>Rp. {{ number_format($value['sisa_pinjaman'], 2) }}</td>
+                </tr>
+                @endforeach
 
                 </tbody>
                 <tfoot>
                 <tr>
                   
                   <th>Nama Peminjam</th>
-                  <th>Total Plafon</th>
-                  <th>Total Jasa Terhitung</th>
-                  <th>Total Bayar</th>
-                  <th>Sisa Plafon</th>
+                  <th>Jumlah Pinjaman</th>
+                  <th>Tenor</th>
+                  <th>Angsuran Ke</th>
+                  <th>Sisa Pinjaman</th>
+                  <th>Aksi</th>
                 </tr>
                 </tfoot>
-              </table>
+              </table> -->
             </div>
             <!-- /.box-body -->
           </div>
