@@ -71,6 +71,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/aplikasi_pinjaman/delete', 'AplikasiPinjaman@drops')->name('aplikasi_pinjaman.delete');
 
 	Route::get('/DataPinjaman/detail', 'DataPinjaman@detail')->name('pinjaman.detail');
+	Route::get('/DataPinjaman/print', 'DataPinjaman@print')->name('pinjaman.print');
 
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

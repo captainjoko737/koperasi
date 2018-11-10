@@ -104,8 +104,8 @@
 
             @if ( $status_user == 'karyawan' &&  $aplikasi_pinjaman['status'] == 'disetujui')
 
-            <p>Aplikasi Pinjaman anda telah di setujui oleh accounting dengan rincian sebagai berikut, </p>
-            <p>Jika anda setuju dengan rincian sebagai berikut maka silahkan tekan tombol setuju untuk proses lebih lanjut.</p>
+            <p>Aplikasi Pinjaman anda telah di setujui oleh accounting dengan rincian sebagai berikut: </p>
+            <p>Jika anda setuju dengan rincian sebagai berikut maka silahkan tekan tombol setuju untuk proses lebih lanjut</p>
             <form hidden action="{{ route('aplikasi_pinjaman.proses_pinjaman') }}" id="form3">
               <input type="text" hidden id="id" class="form-control" placeholder="" name="id" readonly value="{{ $aplikasi_pinjaman['id'] }}">
               <input type="text" hidden id="status" class="form-control" placeholder="" name="status" readonly value="setuju">

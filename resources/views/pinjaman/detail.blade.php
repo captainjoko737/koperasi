@@ -29,6 +29,9 @@
           
           <div class="box">
             <div class="box-header with-border">
+              <div class="box-footer clearfix no-border">
+              <a  href="{{ route('pinjaman.print') }}"  type="button" class="btn btn-info pull-right"><i class="fa fa-print"></i> Print Billing </a>
+            </div>
               <h3 class="box-title">Tabel Angsuran</h3>
             </div>
             <!-- /.box-header -->

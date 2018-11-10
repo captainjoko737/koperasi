@@ -30,5 +30,10 @@ class DataPinjaman extends Controller
 		return view('pinjaman.detail', $data);
 
     }
+
+    public function print(request $request) {
+
+    	return view('pinjaman.print');
+    }
     
 }
