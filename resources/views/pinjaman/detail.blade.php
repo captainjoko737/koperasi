@@ -28,6 +28,8 @@
           
           <div class="box">
             <div class="box-header with-border">
+              <div class="box-footer clearfix no-border">
+            </div>
               <h3 class="box-title">Tabel Angsuran</h3>
             </div>
             <!-- /.box-header -->

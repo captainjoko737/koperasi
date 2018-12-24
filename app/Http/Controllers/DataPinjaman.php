@@ -247,9 +247,6 @@ class DataPinjaman extends Controller
 
         $data['result'] = $result;
         $data['pinjaman'] = $pinjaman;
-        // return $data;
-
-        // $data['nama'] = 'Radit';
 
         $pdf = PDF::loadView('pinjaman.detail-print', $data);
         $pdf->setPaper('A4', 'landscape');

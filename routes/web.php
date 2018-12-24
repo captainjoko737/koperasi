@@ -79,6 +79,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/aplikasi_pinjaman/delete', 'AplikasiPinjaman@drops')->name('aplikasi_pinjaman.delete');
 
 	Route::get('/DataPinjaman/detail', 'DataPinjaman@detail')->name('pinjaman.detail');
+
 	Route::get('/DataPinjaman/detail/print', 'DataPinjaman@detailPrint')->name('pinjaman.detail.print');
 	Route::get('/bayar', 'DataPinjaman@bayar')->name('pinjaman.bayar');
 	Route::get('/konfirmasi', 'DataPinjaman@konfirmasi')->name('pinjaman.konfirmasi');
@@ -88,6 +89,9 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/pengaturan', 'Pengaturan@index')->name('pengaturan.index');
 	Route::get('/pengaturan/detail', 'Pengaturan@detail')->name('pengaturan.detail');
 	Route::get('/pengaturan/simpan', 'Pengaturan@save')->name('pengaturan.simpan');
+
+	// Route::get('/DataPinjaman/print', 'DataPinjaman@print')->name('pinjaman.print');
+
 
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
