@@ -43,17 +43,25 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/SimpananWajib/delete', 'SimpananWajib@drop')->name('SimpananWajib.delete');
 	Route::get('/SimpananWajib/save', 'SimpananWajib@save')->name('SimpananWajib.save');
 
+	Route::get('/SimpananSukarela/create', 'SimpananSukarela@create')->name('SimpananSukarela.create');
+	Route::get('/SimpananSukarela/detail', 'SimpananSukarela@detail')->name('SimpananSukarela.detail');
+	Route::get('/SimpananSukarela/edit', 'SimpananSukarela@edit')->name('SimpananSukarela.edit');
+	Route::get('/SimpananSukarela/add', 'SimpananSukarela@add')->name('SimpananSukarela.add');
+	Route::get('/SimpananSukarela/delete', 'SimpananSukarela@drop')->name('SimpananSukarela.delete');
+
 
 	Route::get('/pengurus', 'Pengurus@index')->name('pengurus');
 	Route::get('/karyawan', 'Karyawan@index')->name('karyawan');
 	Route::get('/CalonAnggota', 'CalonAnggota@index')->name('CalonAnggota');
 	Route::get('/DataSimpananAnggota', 'DataSimpananAnggota@index')->name('DataSimpananAnggota');
 	Route::get('/DaftarTunggakan', 'DaftarTunggakan@index')->name('DaftarTunggakan');
-	Route::get('/JenisSimpanan', 'JenisSimpanan@index')->name('JenisSimpanan');
+	Route::get('/SimpananSukarela', 'SimpananSukarela@index')->name('SimpananSukarela');
 	Route::get('/DataPinjaman', 'DataPinjaman@index')->name('DataPinjaman');
 	Route::get('/AngsuranTunggakan', 'AngsuranTunggakan@index')->name('AngsuranTunggakan');
-	Route::get('/bulanan', 'bulanan@index')->name('bulanan');
+	Route::get('/bulanan', 'Bulanan@index')->name('bulanan');
+	Route::get('/bulanan/print', 'Bulanan@prints')->name('bulanan.print');
 	Route::get('/tahunan', 'tahunan@index')->name('tahunan');
+	Route::get('/tahunan/search', 'tahunan@search')->name('tahunan.search');
 	
 
 	Route::get('/home', 'HomeController@index')->name('home');
@@ -71,6 +79,15 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/aplikasi_pinjaman/delete', 'AplikasiPinjaman@drops')->name('aplikasi_pinjaman.delete');
 
 	Route::get('/DataPinjaman/detail', 'DataPinjaman@detail')->name('pinjaman.detail');
+	Route::get('/DataPinjaman/detail/print', 'DataPinjaman@detailPrint')->name('pinjaman.detail.print');
+	Route::get('/bayar', 'DataPinjaman@bayar')->name('pinjaman.bayar');
+	Route::get('/konfirmasi', 'DataPinjaman@konfirmasi')->name('pinjaman.konfirmasi');
+	Route::get('/print', 'DataPinjaman@prints')->name('pinjaman.print');
+	Route::get('/cetak', 'DataPinjaman@cetak')->name('pinjaman.cetak');
+
+	Route::get('/pengaturan', 'Pengaturan@index')->name('pengaturan.index');
+	Route::get('/pengaturan/detail', 'Pengaturan@detail')->name('pengaturan.detail');
+	Route::get('/pengaturan/simpan', 'Pengaturan@save')->name('pengaturan.simpan');
 
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

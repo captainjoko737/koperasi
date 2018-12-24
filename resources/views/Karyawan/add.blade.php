@@ -62,13 +62,16 @@
                   <input type="password" class="form-control" placeholder="Masukkan Password" name="password" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">Tanggal</label>
-                  <input type="date" class="form-control" placeholder="Masukkan Tanggal" name="tanggal" required="required">
+                  <label>Jabatan</label>
+                  <select class="form-control" name="jabatan" required="required">
+                    <option>-</option>
+                    <option>Ketua</option>
+                    <option>Sekertaris</option>
+                    <option>Bendahara</option>
+                    <option>Juru Bayar</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputPassword1">Angsuran Pokok</label>
-                  <input type="text" class="form-control" placeholder="" readonly name="jumlah" value="{{ $simpanan_pokok['value'] }}" required="required">
-                </div>
+                
                 
               </div>
               <!-- /.box-body -->

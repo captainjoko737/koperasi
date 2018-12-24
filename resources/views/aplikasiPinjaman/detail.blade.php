@@ -102,7 +102,7 @@
             </div>
             @endif
 
-            @if ( $status_user == 'karyawan' &&  $aplikasi_pinjaman['status'] == 'disetujui')
+            @if ( $aplikasi_pinjaman['status'] == 'disetujui')
 
             <p>Aplikasi Pinjaman anda telah di setujui oleh accounting dengan rincian sebagai berikut, </p>
             <p>Jika anda setuju dengan rincian sebagai berikut maka silahkan tekan tombol setuju untuk proses lebih lanjut.</p>

@@ -38,9 +38,8 @@
           <ul class="treeview-menu">
             <!-- <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Diklat</a></li> -->
             <li><a href="{{ route('DataSimpananAnggota') }}" {{ isset($status_user) == 'accounting' ? '' : 'hidden' }}><i class="fa fa-circle-o"></i> Data Simpanan Anggota</a></li>
-            <li><a href="{{ route('DaftarTunggakan') }}"><i class="fa fa-circle-o"></i> Daftar Tunggakan</a></li>
-            <li><a href="{{ route('JenisSimpanan') }}"><i class="fa fa-circle-o"></i> Jenis Simpanan</a></li>
             <li><a href="{{ route('SimpananWajib') }}"><i class="fa fa-circle-o"></i> Simpanan Wajib</a></li>
+            <li><a href="{{ route('SimpananSukarela') }}"><i class="fa fa-circle-o"></i> Simpanan Sukarela</a></li>
           </ul>
         </li>
 
@@ -68,14 +67,13 @@
           <ul class="treeview-menu">
             <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('bulanan') }}"><i class="fa fa-circle-o"></i>Bulanan</a></li>
             <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('tahunan') }}"><i class="fa fa-circle-o"></i>Tahunan</a></li>
-            <li><a href="{{ route('tahunan') }}"><i class="fa fa-circle-o"></i> Data Tagihan</a></li>
           </ul>
         </li>
 
+        <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('pengaturan.index') }}"><i class="fa fa-gear"></i>Pengaturan</a></li>
+
         <li class="treeview" {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}>
-          <a href="#">
-            <i class="fa fa-gear"></i> <span>Pengaturan</span>
-          </a>
+        
 
         <li class="{{ Request::segment(1) === 'logout' ? 'active' : '' }} " ><a href="{{ url('/logout') }}"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
       </ul>

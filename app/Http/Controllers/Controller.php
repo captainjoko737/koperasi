@@ -17,6 +17,7 @@ class Controller extends BaseController
 
     public function __construct()
     {
+
         $this->middleware(function ($request, $next) {
             $this->user = Auth::user();
 
@@ -29,17 +30,27 @@ class Controller extends BaseController
 
     public function rounding($value)
     {
-        $hundred = substr($value, -3);
+        $hundred = substr($value, -2);
 
-        if ($hundred == 000) {
+        if($hundred > 00){
+            $result = $value + (100 - $hundred);
+        }else{
             $result = $value;
-        }else if($hundred < 499){
-            $result = $value + (500 - $hundred);
-        }else if($hundred < 999){
-            $result = $value + (1000 - $hundred);
         }
-// echo json_encode($result);
-// die();
+
+        return $result;
+    }
+
+    public function roundings($value)
+    {
+        $hundred = substr($value, -2);
+
+        if($hundred > 00){
+            $result = $value - $hundred;
+        }else{
+            $result = $value;
+        }
+
         return $result;
     }
 }

@@ -9,6 +9,8 @@ use App\MAplikasiPinjaman;
 use App\MAnggota;
 use App\MPinjaman;
 use App\MAngsuran;
+use App\MConfig;
+use Carbon\Carbon;
 
 class AplikasiPinjaman extends Controller
 {
@@ -34,9 +36,11 @@ class AplikasiPinjaman extends Controller
         for ($i=1; $i <= 60; $i++) { 
             array_push($tenor, $i);
         }
+
         $data['tenor'] = $tenor;
 
         $calculate = $this->calculate($request['id']);
+
     	$data['result'] = $calculate['result'];
         $data['aplikasi_pinjaman'] = $calculate['aplikasi_pinjaman'];
     	
@@ -66,24 +70,30 @@ class AplikasiPinjaman extends Controller
         $sisaPinjaman = $jumlahPinjaman;
 
         $result = [];
-        for ($i=0; $i <= $bulanCicilan; $i++) { 
+        for ($i=0; $i <= $bulanCicilan; $i++) {
 
             if ($i != 0) {
 
-                $angsuranBunga = $sisaPinjaman * 0.3 * 0.0833;
+                $angsuranBunga = $sisaPinjaman * 2.5 / 100;
+                $angsuranBunga = round($angsuranBunga, 0);
+
+                $angsuranPokok = $jumlahPinjaman / $bulanCicilan;
+                $angsuranPokok = round($angsuranPokok, 0);
+
+                $totalAngsuran = $jumlahPinjaman / $bulanCicilan + $this->rounding($angsuranBunga);
+                $totalAngsuran = round($totalAngsuran, 0);
 
                 $sisaPinjaman = $sisaPinjaman - $jumlahPinjaman / $bulanCicilan;
-
-                $total_angsuran = $jumlahPinjaman / $bulanCicilan + $this->rounding($angsuranBunga);
+                $sisaPinjaman = round($sisaPinjaman, 0);
 
                 $bulanan = [
                     'bulan'          => $i,
                     'angsuran_bunga' => $this->rounding($angsuranBunga),
-                    'angsuran_pokok' => $jumlahPinjaman / $bulanCicilan,
-                    'total_angsuran' => $total_angsuran,
-                    'sisa_pinjaman'  => $sisaPinjaman
+                    'angsuran_pokok' => $this->rounding($angsuranPokok),
+                    'total_angsuran' => $this->rounding($totalAngsuran),
+                    'sisa_pinjaman'  => $this->roundings($sisaPinjaman)
                 ];
-                
+                // return $total_angsuran;
             }else{
                 $bulanan = [
                     'bulan'          => $i,
@@ -170,36 +180,55 @@ class AplikasiPinjaman extends Controller
 
     public function prosesPinjaman(request $request) {
 
+        $bunga = MConfig::where('key', 'bunga')->first();
+
         if ($request['status'] == 'setuju') {
             // Create new data in table pinjaman
             $calculate = $this->calculate($request['id']);
-
+            
             $dataPinjaman = new MPinjaman;
             $dataPinjaman->id_user           =  $calculate['aplikasi_pinjaman']['id_user'];
             $dataPinjaman->jumlah_pinjaman   =  $calculate['aplikasi_pinjaman']['jumlah_disetujui'];
             $dataPinjaman->tenor             =  $calculate['aplikasi_pinjaman']['bulan_cicilan_disetujui'];
             $dataPinjaman->angsuran_ke       =  0;
+            $dataPinjaman->bunga             =  $bunga['value'];
             $dataPinjaman->sisa_pinjaman     =  $calculate['aplikasi_pinjaman']['jumlah_disetujui'];
+
             $dataPinjaman->save();
 
             $dataAngsuran = [];
 
+            $jatuhTempo = $this->getDateNumber();
+
             foreach ($calculate['result'] as $key => $value) {
-                $param = [
-                    'id_pinjaman'       =>  $dataPinjaman->id,
-                    'angsuran_ke'       =>  (int)$value['bulan'],
-                    'angsuran_bunga'    =>  (int)$value['angsuran_bunga'],
-                    'angsuran_pokok'    =>  (int)$value['angsuran_pokok'],
-                    'total_angsuran'    =>  (int)$value['total_angsuran'],
-                    'sisa_pinjaman'     =>  (int)$value['sisa_pinjaman'],
-                    'jumlah'            =>  0,
-                    'denda'             =>  0,
-                    'status'            =>  'belum dibayar'
-                ];
 
-                array_push($dataAngsuran, $param);
+                if ($key != count($calculate['result']) -1) {
+                    if ($key == 0) {
+                        $status = 'lunas';
+                        $tanggalJatuhTempo = Carbon::now()->format('Y-m-d');
+                    }else{
+                        $status = 'belum dibayar';
+                        $tanggalJatuhTempo = $jatuhTempo->addMonths(1)->format('Y-m-d');
+                    }
+
+                    $param = [
+                        'id_user'           =>  $calculate['aplikasi_pinjaman']['id_user'],
+                        'id_pinjaman'       =>  $dataPinjaman->id,
+                        'angsuran_ke'       =>  (int)$value['bulan'],
+                        'angsuran_bunga'    =>  (int)$value['angsuran_bunga'],
+                        'angsuran_pokok'    =>  (int)$value['angsuran_pokok'],
+                        'total_angsuran'    =>  (int)$value['total_angsuran'],
+                        'sisa_pinjaman'     =>  (int)$value['sisa_pinjaman'],
+                        'jumlah'            =>  0,
+                        'denda'             =>  0,
+                        'status'            =>  $status,
+                        'tanggal_jatuh_tempo' => $tanggalJatuhTempo
+                    ];
+
+                    array_push($dataAngsuran, $param);
+                }
             }
-
+// return $dataAngsuran;
             MAngsuran::insert($dataAngsuran);
 
             // delete data di aplikasi pinjaman
@@ -233,6 +262,23 @@ class AplikasiPinjaman extends Controller
         $data->delete();
 
         return redirect()->route('aplikasi_pinjaman');
+    }
+
+    public function getDateNumber() {
+
+        $number = Carbon::now()->format('d');
+        $number = (Int)$number;
+
+        if ($number <= 17) {
+            $balance = 17 - $number;
+            $res = Carbon::now()->addDay($balance);
+        }else{
+            $balance = $number - 17;
+            $res = $number - $balance;
+            $res = Carbon::now()->addDay($balance);
+        }
+
+        return $res;
     }
 
 

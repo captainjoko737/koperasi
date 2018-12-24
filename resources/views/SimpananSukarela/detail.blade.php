@@ -2,15 +2,17 @@
 
 @section('content')
 
+
 <section class="content-header">
       <h1>
-        Pengurus
+        Detail Simpanan Sukarela
         
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"> Dashboard</a></li>
-        <li><a href="#">Data Master</a></li>
-        <li class="active">Pengurus</li>
+        <li><a href="#">Simpanan</a></li>
+        <li class="active">Simpanan Sukarela</li>
+        <li class="active">Detail Simpanan Sukarela</li>
       </ol>
     </section>
 
@@ -20,10 +22,12 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Daftar Pengurus</h3> 
+              <h3 class="box-title"></h3> 
               <div class="box-footer clearfix no-border">
-              <a  href="{{ route('Karyawan.add') }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
+                <a  href="{{ route('SimpananSukarela') }}"  type="button" class="btn btn-success pull-left"><i class="fa fa-arrow-left"></i> Back</a>
+              <a  href="{{ route('SimpananSukarela.add', ['id' => $id]) }}"  type="button" class="btn btn-success pull-right"><i class="fa fa-plus"></i> Tambah</a>
             </div>
+              
             
             </div>
             <!-- /.box-header -->
@@ -31,41 +35,32 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Nama Karyawan</th>
-                  <th>TTL</th>
-                  <th>Jenis Kelamin</th>
-                  <th>Telepon</th>
-                  <th>Email</th>
-                  <th>Jabatan</th>
+                  <th>Nama</th>
+                  <th>Simpanan Sukarela</th>
+                  <th>Tanggal</th>
                   <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($result as $key => $value)
+                  @foreach ($result as $key => $value)
                   <tr>
                     <td>{{ $value['nama'] }}</td>
-                    <td>{{ $value['ttl'] }}</td>
-                    <td>{{ $value['jenis_kelamin'] }}</td>
-                    <td>{{ $value['telepon'] }}</td>
-                    <td>{{ $value['email'] }}</td>
-                    <td>{{ $value['jabatan'] }}</td>
+                    <td>Rp. {{ number_format($value['jumlah'], 2) }}</td>
+                    <td>{{ $value['tanggal'] }}</td>
                     <td>
                     
-                        <a href="{{ route('Karyawan.edit', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a> 
-                        <a href="{{ route('Karyawan.delete', ['id' => $value['id']]) }}"><i class="fa fa-trash-o"></i></a> 
-                      
+                        <!-- <a href="{{ route('SimpananSukarela.edit', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a>  -->
+                        <a href="{{ route('SimpananSukarela.delete', ['id' => $value['id'], 'id_user' => $id]) }}"><i class="fa fa-trash-o"></i></a>
+                        
                     </td>
                   </tr>
                 @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Nama Karyawan</th>
-                  <th>TTL</th>
-                  <th>Jenis Kelamin</th>
-                  <th>Telepon</th>
-                  <th>Email</th>
-                  <th>Jabatan</th>
+                  <th>Nama</th>
+                   <th>Simpanan Sukarela</th>
+                  <th>Tanggal</th>
                   <th>Aksi</th>
                 </tr>
                 </tfoot>
@@ -79,5 +74,5 @@
       </div>
       <!-- /.row -->
     </section>
-
 @endsection
+

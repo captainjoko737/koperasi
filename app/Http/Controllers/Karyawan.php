@@ -14,12 +14,12 @@ class Karyawan extends Controller
 {
 	public function index() {
 		
-		$karyawan = MAnggota::where('status', 'Karyawan')->get();
-		
-		foreach ($karyawan as $key => $value) {
-			$simpananPokok = MSimpananPokok::where('id_user', $value['id'])->first();
-			$karyawan[$key]['simpananPokok'] = $simpananPokok;
-		}
+		$karyawan = User::get();
+		// return ';
+		// foreach ($karyawan as $key => $value) {
+		// 	$simpananPokok = MSimpananPokok::where('id_user', $value['id'])->first();
+		// 	$karyawan[$key]['simpananPokok'] = $simpananPokok;
+		// }
 
 		$data['result'] = $karyawan;
 		return view('karyawan', $data);
@@ -33,26 +33,32 @@ class Karyawan extends Controller
 
 	public function create(request $request) {
 
-		$anggota = new MAnggota;
+		// $anggota = new MAnggota;
 
-		$anggota->nama = $request->nama;
-		$anggota->ttl = $request->ttl;
-		$anggota->jenis_kelamin = $request->jenis_kelamin;
-		$anggota->alamat = $request->alamat;
-		$anggota->telepon = $request->telepon;
-		$anggota->email = $request->email;
-		$anggota->status = 'aktif';
+		// $anggota->nama = $request->nama;
+		// $anggota->ttl = $request->ttl;
+		// $anggota->jenis_kelamin = $request->jenis_kelamin;
+		// $anggota->alamat = $request->alamat;
+		// $anggota->telepon = $request->telepon;
+		// $anggota->email = $request->email;
+		// $anggota->status = 'aktif';
 
-		$anggota->save();
+		// $anggota->save();
 
-		$simpananPokok = new MSimpananPokok;
-		$simpananPokok->id_user = $anggota->id;
-		$simpananPokok->tanggal = $request->tanggal;
-		$simpananPokok->jumlah = $request->jumlah;
+		// $simpananPokok = new MSimpananPokok;
+		// $simpananPokok->id_user = $anggota->id;
+		// $simpananPokok->tanggal = $request->tanggal;
+		// $simpananPokok->jumlah = $request->jumlah;
 
-		$simpananPokok->save();
+		// $simpananPokok->save();
 
 		$karyawan = new User;
+
+		if ($request->jabatan == 'Juru Bayar') {
+			$jabatan = 'karyawan';
+		}else{
+			$jabatan = 'accounting';
+		}
 
 		$karyawan->nama = $request->nama;
 		$karyawan->email = $request->email;
@@ -60,7 +66,8 @@ class Karyawan extends Controller
 		$karyawan->ttl = $request->ttl;
 		$karyawan->jenis_kelamin = $request->jenis_kelamin;
 		$karyawan->telepon = $request->telepon;
-		$karyawan->status_user = 'karyawan';
+		$karyawan->jabatan = $request->jabatan;
+		$karyawan->status_user = $jabatan;
 		$karyawan->status = 'aktif';
 
 		$karyawan->save();
@@ -88,9 +95,8 @@ class Karyawan extends Controller
 
 	public function edit(request $request) {
 
-		// return $request->id;
-		$anggota = MAnggota::where('id', $request->id)->first();
-		// return $anggota;
+		$anggota = User::where('id', $request->id)->first();
+		
 		$data['result'] = $anggota;
 
 		return view('Karyawan.edit', $data);	
@@ -98,7 +104,7 @@ class Karyawan extends Controller
 
 	public function drop(request $request) {
 
-		$data = MAnggota::where('id', $request->id)->first();
+		$data = User::where('id', $request->id)->first();
 
 		$data->delete();
 

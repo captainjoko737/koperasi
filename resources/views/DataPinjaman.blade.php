@@ -2,7 +2,6 @@
 
 @section('content')
 
-
 <section class="content-header">
       <h1>
         Data Pinjaman
@@ -28,6 +27,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>ID Pinjaman</th>
                   <th>Nama Peminjam</th>
                   <th>Jumlah Pinjaman</th>
                   <th>Tenor</th>
@@ -40,13 +40,19 @@
 
                 @foreach ($result as $key => $value)
                 <tr>
+                  <td>{{ $value['id'] }}</td>
                   <td>{{ $value['nama'] }}</td>
                   <td>Rp. {{ number_format($value['jumlah_pinjaman'], 2) }}</td>
-                  <td>{{ $value['tenor'] }}</td>
+                  <td>{{ $value['tenor'] }} Bulan</td>
                   <td>{{ $value['angsuran_ke'] }}</td>
-                  <td>Rp. {{ number_format($value['sisa_pinjaman'], 2) }}</td>
+                  @if ($value['angsuran_ke'] == $value['tenor'])
+                      <td>Rp. 0.00</td>
+                  @else
+                      <td>Rp. {{ number_format($value['sisa_pinjaman'], 2) }}</td>
+                  @endif
                   <td>
-                      <a href="{{ route('pinjaman.detail', ['id' => $value['id']]) }}"><i class="fa fa-search"></i></a> 
+                      <a href="{{ route('pinjaman.detail', ['id' => $value['id']]) }}" ><i class="fa fa-search"></i></a> 
+                      <a href="{{ route('pinjaman.detail.print', ['id' => $value['id']]) }}" target="_blank"><i class="fa fa-print"></i></a> 
                   </td>
                 </tr>
                 @endforeach
@@ -54,6 +60,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th>ID Pinjaman</th>
                   <th>Nama Peminjam</th>
                   <th>Jumlah Pinjaman</th>
                   <th>Tenor</th>
@@ -63,43 +70,7 @@
                 </tr>
                 </tfoot>
               </table>
-              <!-- 
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  
-                  <th>Nama Peminjam</th>
-                  <th>Jumlah Pinjaman</th>
-                  <th>Tenor</th>
-                  <th>Angsuran Ke</th>
-                  <th>Sisa Pinjaman</th>
-                  <th>Aksi</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach ($result as $key => $value)
-                <tr>
-                  <td>{{ $value['nama'] }}</td>
-                  <td>Rp. {{ number_format($value['jumlah_pinjaman'], 2) }}</td>
-                  <td>{{ $value['tenor'] }}</td>
-                  <td>{{ $value['angsuran_ke'] }}</td>
-                  <td>Rp. {{ number_format($value['sisa_pinjaman'], 2) }}</td>
-                </tr>
-                @endforeach
-
-                </tbody>
-                <tfoot>
-                <tr>
-                  
-                  <th>Nama Peminjam</th>
-                  <th>Jumlah Pinjaman</th>
-                  <th>Tenor</th>
-                  <th>Angsuran Ke</th>
-                  <th>Sisa Pinjaman</th>
-                  <th>Aksi</th>
-                </tr>
-                </tfoot>
-              </table> -->
+              
             </div>
             <!-- /.box-body -->
           </div>

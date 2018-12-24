@@ -46,10 +46,10 @@
                     <option value="Perempuan">Perempuan</option>
                   </select>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="exampleInputPassword1">Alamat</label>
                   <input type="text" class="form-control" placeholder="Masukkan Alamat" name="alamat" required="required" value="{{ $result['alamat'] }}">
-                </div>
+                </div> -->
                 <div class="form-group">
                   <label for="exampleInputPassword1">Telepon</label>
                   <input type="text" class="form-control" placeholder="Masukkan Telepon" name="telepon" required="required" value="{{ $result['telepon'] }}">
@@ -64,7 +64,7 @@
               <!-- /.box-body -->
 
               <div class="box-footer">
-                <a href="{{ route('anggota') }}" type="button" class="btn btn-primary">Back</a>
+                <a href="{{ route('karyawan') }}" type="button" class="btn btn-primary">Back</a>
                 <button type="submit" class="btn btn-primary pull-right">Save</button>
               </div>
             </form>

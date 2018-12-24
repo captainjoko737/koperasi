@@ -6,14 +6,13 @@
 <section class="content-header">
 
   <h1>
-    Detail Simpanan Wajib
+    Detail Pinjaman
     
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"> Dashboard</a></li>
-    <li><a href="#">Simpanan</a></li>
-    <li class="active">Simpanan Wajib</li>
-    <li class="active">Detail Simpanan Wajib</li>
+    <li><a href="#">Pinjaman</a></li>
+    <li class="active">Detail Data Pinjaman</li>
   </ol>
 </section>
 
@@ -44,7 +43,9 @@
                   <th>Pembayaran</th>
                   <th>Denda</th>
                   <th>Status</th>
+                  <th>Jatuh Tempo</th>
                   <th>Tanggal Pembayaran</th>
+                  <th>Aksi</th>
                 </tr>
 
                 @foreach ($result as $key => $value)
@@ -53,10 +54,7 @@
                       <tr>
                         
                       </tr>
-                    @elseif($loop->last)
-                    <tr>
-                        
-                      </tr>
+                    
                     @else
                       <tr>
                         <td>{{ $value['angsuran_ke'] }}</td>
@@ -64,10 +62,23 @@
                         <td>Rp. {{ number_format($value['angsuran_pokok'], 2) }}</td>
                         <td>Rp. {{ number_format($value['total_angsuran'], 2) }}</td>
                         <td>Rp. {{ number_format($value['sisa_pinjaman'], 2) }}</td>
-                        <td>{{ $value['jumlah'] }}</td>
-                        <td>{{ $value['denda'] }}</td>
+                        <td>Rp. {{ number_format($value['jumlah'], 2) }}</td>
+                        <td>Rp. {{ number_format($value['denda'], 2) }}</td>
                         <td>{{ $value['status'] }}</td>
-                        <th>{{ $value['updated_at'] }}</th>
+                        <th>{{ $value->tanggal_jatuh_tempo->format('d M Y') }}</th>
+                        <th>
+                            @if ($value['tanggal_pembayaran'] != null)
+                              {{ $value->tanggal_pembayaran->format('d M Y') }}
+                            @endif
+                        </th>
+                        <th>
+                          @if ($value['tanggal_pembayaran'] == null && $value['status_bayar'] == true)
+                            <a href="{{ route('pinjaman.bayar', ['id' => $value['id'], 'id_pinjaman' => $value['id_pinjaman']]) }}" class="btn btn-default"> <i class="fa fa-money"></i> Bayar</a>
+                          @elseif ($value['jumlah'] != 0)
+                            <a href="{{ route('pinjaman.cetak', ['id' => $value['id'], 'id_pinjaman' => $value['id_pinjaman']]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i>  Cetak</a>
+                          @endif
+                            
+                        </th>
                       </tr>
                     @endif
                 

@@ -30,28 +30,33 @@
                 <tr>
                   
                   <th>Nama</th>
+                  <th>No. Tlp</th>
                   <th>Angsuran Ke</th>
                   <th>Denda</th>
-                  <th>Jumlah</th>
+                  <th>Tanggal Jatuh Tempo</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
                   
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                @foreach ($result as $key => $value)
+                  <tr>
+                    <td>{{ $value['nama'] }}</td>
+                    <td>{{ $value['telepon'] }}</td>
+                    <td>{{ $value['angsuran_ke'] }}</td>
+                    <td>Rp. {{ number_format($value['denda'], 2) }}</td>
+                    <td>{{ $value['jatuh_tempo'] }}</td>
+                  </tr>
+                @endforeach
                 
                 </tbody>
                 <tfoot>
                 <tr>
                   
                   <th>Nama</th>
+                  <th>No. Tlp</th>
                   <th>Angsuran Ke</th>
                   <th>Denda</th>
-                  <th>Jumlah</th>
+                  <th>Tanggal Jatuh Tempo</th>
                 </tr>
                 </tfoot>
               </table>

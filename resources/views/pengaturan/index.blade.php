@@ -5,13 +5,11 @@
 
 <section class="content-header">
       <h1>
-        Jenis Simpanan
-        
+        Pengaturan
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"> Dashboard</a></li>
-        <li><a href="#">Simpanan</a></li>
-        <li class="active">Jenis Simpanan  </li>
+        <li><a href="#">Pengaturan</a></li>
       </ol>
     </section>
 
@@ -21,36 +19,40 @@
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Jenis Simpanan</h3>
+              <h3 class="box-title"></h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example2" class="table table-bordered table-hover">
+              <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Kode</th>
-                  <th>Nama</th>
-                  <th>Kode Print</th>
-                  <th>Deskripsi</th>
-                  <th>Jasa Bulanan</th>
+                  <th>KEY</th>
+                  <th>VALUE</th>
+                  <th>Aksi</th>
                 </tr>
                 </thead>
                 <tbody>
+                @foreach ($result as $key => $value)
                 <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>{{ $value['key'] }}</td>
+                  @if ($value['key'] == 'bunga' || $value['key'] == 'provisi')
+                    <td>{{ $value['value'] }} %</td>
+                  @else
+                    <td>Rp. {{ number_format($value['value'], 2) }}</td>
+                  @endif
+
+                  
+                  <td>
+                      <a href="{{ route('pengaturan.detail', ['id' => $value['id']]) }}"><i class="fa fa-edit"></i></a>     
+                  </td>
                 </tr>
+                @endforeach
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Kode</th>
-                  <th>Nama</th>
-                  <th>Kode Print</th>
-                  <th>Deskripsi</th>
-                  <th>Jasa Bulanan</th>
+                  <th>KEY</th>
+                  <th>VALUE</th>
+                  <th>Aksi</th>
                 </tr>
                 </tfoot>
               </table>
