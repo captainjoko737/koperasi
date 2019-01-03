@@ -74,6 +74,14 @@
                   <label for="exampleInputPassword1">Angsuran Pokok</label>
                   <input type="text" class="form-control" placeholder="" readonly name="jumlah" value="{{ $simpanan_pokok['value'] }}" required="required">
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Simpanan Wajib</label>
+                  <input type="text" class="form-control" placeholder="" name="simpanan_wajib" value="">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Simpanan Sukarela</label>
+                  <input type="text" class="form-control" placeholder="" name="simpanan_sukarela" value="">
+                </div>
                 
               </div>
               <!-- /.box-body -->

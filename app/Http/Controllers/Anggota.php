@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\MAnggota;
 use App\MSimpananPokok;
+use App\MSimpananWajib;
+use App\MSimpananSukarela;
 use App\MConfig;
 
 class Anggota extends Controller
@@ -52,6 +54,20 @@ class Anggota extends Controller
 		$simpananPokok->jumlah = $request->jumlah;
 
 		$simpananPokok->save();
+
+		$simpananWajib = new MSimpananWajib;
+		$simpananWajib->id_user = $anggota->id;
+		$simpananWajib->tanggal = $request->tanggal;
+		$simpananWajib->jumlah = $request->simpanan_wajib;
+
+		$simpananWajib->save();
+
+		$simpananSukarela = new MSimpananSukarela;
+		$simpananSukarela->id_user = $anggota->id;
+		$simpananSukarela->tanggal = $request->tanggal;
+		$simpananSukarela->jumlah = $request->simpanan_sukarela;
+
+		$simpananSukarela->save();
 
 		return redirect()->route('anggota');
 	}

@@ -27,7 +27,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>ID Pinjaman</th>
+                  <th width="10%">ID Pinjaman</th>
                   <th>Nama Peminjam</th>
                   <th>Jumlah Pinjaman</th>
                   <th>Tenor</th>
@@ -51,8 +51,20 @@
                       <td>Rp. {{ number_format($value['sisa_pinjaman'], 2) }}</td>
                   @endif
                   <td>
-                      <a href="{{ route('pinjaman.detail', ['id' => $value['id']]) }}" ><i class="fa fa-search"></i></a> 
+
+                      <a href="{{ route('pinjaman.detail', ['id' => $value['id']]) }}" ><i class="fa fa-search"></i></a>
+
                       <a href="{{ route('pinjaman.detail.print', ['id' => $value['id']]) }}" target="_blank"><i class="fa fa-print"></i></a> 
+                        @if ($value['angsuran_ke'] == 0)
+
+                          <form class="delete" action="{{ route('pinjaman.hapus') }}" method="POST">
+                              <input type="hidden" name="_method" value="DELETE">
+                              <input type="hidden" name="id" value="{{$value->id}}">
+                              <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                              <button type="submit" >delete</button> 
+                          </form>
+
+                        @endif
                   </td>
                 </tr>
                 @endforeach
@@ -82,3 +94,5 @@
     </section>
 
 @endsection
+
+

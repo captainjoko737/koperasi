@@ -26,30 +26,38 @@ class DataPinjaman extends Controller
 
 	public function detail(request $request) {
 
-        $pinjaman = MPinjaman::where('id', $request['id'])->first();
-
+        $pinjamanTotal = MPinjaman::where('id', $request['id'])->first();
+ 
         $result = MAngsuran::where('id_pinjaman', $request['id'])->get();
 
-        $totalPinjaman = $pinjaman['jumlah_pinjaman'];
+        $totalPinjaman = $pinjamanTotal['jumlah_pinjaman'];
         foreach ($result as $key => $value) {
 
             if ($key != 0) {
                 
                 $date = Carbon::now();
+
                 if($date->gt($value->tanggal_jatuh_tempo) && $value['status'] != 'lunas'){
 
                     $diff = $date->diffInMonths($value->tanggal_jatuh_tempo);
 
-                    $bunga = $pinjaman['bunga'];
+                    $bunga = $pinjamanTotal['bunga'];
                     $denda = $value['angsuran_pokok'] * $bunga / 100;
                     $denda = $denda * ($diff + 1);
                     $denda = $this->rounding($denda);
 
-                    $pinjaman = MAngsuran::where('id', $value->id)
+                    if ($pinjamanTotal['denda'] != 0) {
+
+                        $pinjaman = MAngsuran::where('id', $value->id)
                                   ->update(['denda' => $denda]);
-                    $result[$key]['denda'] = $denda; 
-                    $result[$key]['total_angsuran'] = $value->total_angsuran + $denda; 
-                    $result[$key]['status_bayar'] = false;
+
+                        $result[$key]['denda'] = $denda; 
+                        $result[$key]['total_angsuran'] = $value->total_angsuran + $denda; 
+                        $result[$key]['status_bayar'] = false;
+                    }else{
+                        $result[$key]['status_bayar'] = true;
+                    }
+                    
                 }else{
                     $result[$key]['status_bayar'] = true;
                 }
@@ -264,6 +272,13 @@ class DataPinjaman extends Controller
             $json = json_decode($hasil, true);
             return $json;
         }
+    }
+
+    public function hapus(request $request) {
+
+        $pinjaman = MPinjaman::find($request->id);
+        $pinjaman->delete();
+        return redirect()->route('DataPinjaman');
     }
     
 }

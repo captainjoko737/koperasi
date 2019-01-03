@@ -6,14 +6,14 @@
 <section class="content-header">
 
   <h1>
-    Detail Simpanan Wajib
+    Detail Aplikasi Pinjaman
     
   </h1>
   <ol class="breadcrumb">
     <li><a href="#"> Dashboard</a></li>
-    <li><a href="#">Simpanan</a></li>
-    <li class="active">Simpanan Wajib</li>
-    <li class="active">Detail Simpanan Wajib</li>
+    <li><a href="#">Pinjaman</a></li>
+    <li class="active">Aplikasi Pinjaman</li>
+    <li class="active">Detail Aplikasi Pinjaman</li>
   </ol>
 </section>
 
@@ -59,24 +59,36 @@
               <div class="row">
                 <div class="col-md-3">
                     <div class="form-group">
-                        
+                        <label class="control-label">Bulan / Tahun Mulai</label>
+                        <input type="date" id="bulan_mulai" class="form-control" placeholder="" name="bulan_mulai" value="{{ $aplikasi_pinjaman['bulan_mulai'] }}" required>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label class="control-label">Jumlah Disetujui</label>
-                        <input type="text" id="jumlah_disetujui" class="form-control" placeholder="" name="jumlah_disetujui" value="{{ $aplikasi_pinjaman['jumlah_disetujui'] }}">
+                        <input type="text" id="jumlah_disetujui" class="form-control" placeholder="" name="jumlah_disetujui" value="{{ $aplikasi_pinjaman['jumlah_disetujui'] }}" required>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="form-group">
                         <label class="control-label">Tenor / Lama Cicilan Disetujui</label>
                         <div class="form-group">
-                          <select id="singleSelectExample" name="bulan_cicilan_disetujui">
+                          <select id="singleSelectExample" name="bulan_cicilan_disetujui" required>
                             <option></option>
                             @foreach ($tenor as $key => $value)
                               <option value="{{ $value }}">{{ $value }}</option>
                             @endforeach
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label class="control-label">Denda</label>
+                        <div class="form-group">
+                          <select name="denda" required>
+                            <option value="1">Ya</option>
+                            <option value="0">Tidak</option>
                           </select>
                         </div>
                     </div>

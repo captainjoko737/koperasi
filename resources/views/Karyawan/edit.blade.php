@@ -58,6 +58,10 @@
                   <label for="exampleInputPassword1">Email</label>
                   <input type="email" class="form-control" placeholder="Masukkan Email" name="email" required="required" value="{{ $result['email'] }}">
                 </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" placeholder="Masukkan Password" name="password" required="required">
+                </div>
                 
                 
               </div>

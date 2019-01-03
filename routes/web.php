@@ -85,6 +85,7 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/konfirmasi', 'DataPinjaman@konfirmasi')->name('pinjaman.konfirmasi');
 	Route::get('/print', 'DataPinjaman@prints')->name('pinjaman.print');
 	Route::get('/cetak', 'DataPinjaman@cetak')->name('pinjaman.cetak');
+	Route::delete('/hapus', 'DataPinjaman@hapus')->name('pinjaman.hapus');
 
 	Route::get('/pengaturan', 'Pengaturan@index')->name('pengaturan.index');
 	Route::get('/pengaturan/detail', 'Pengaturan@detail')->name('pengaturan.detail');

@@ -164,6 +164,8 @@ class AplikasiPinjaman extends Controller
         if ($request->status == 'disetujui') {
             $aplikasiPinjaman->jumlah_disetujui = $request->jumlah_disetujui;
             $aplikasiPinjaman->bulan_cicilan_disetujui = $request->bulan_cicilan_disetujui;
+            $aplikasiPinjaman->bulan_mulai = $request->bulan_mulai;
+            $aplikasiPinjaman->denda = $request->denda;
             $aplikasiPinjaman->status = 'disetujui';
 
             $aplikasiPinjaman->save();
@@ -193,19 +195,28 @@ class AplikasiPinjaman extends Controller
             $dataPinjaman->angsuran_ke       =  0;
             $dataPinjaman->bunga             =  $bunga['value'];
             $dataPinjaman->sisa_pinjaman     =  $calculate['aplikasi_pinjaman']['jumlah_disetujui'];
+            $dataPinjaman->denda             =  $calculate['aplikasi_pinjaman']['denda'];
 
             $dataPinjaman->save();
 
             $dataAngsuran = [];
 
-            $jatuhTempo = $this->getDateNumber();
+            $jt = $calculate['aplikasi_pinjaman']['bulan_mulai'];
+
+            $tanggalJatuhTempo = $this->getDateNumber();
+
+            $bulanTahunJt = Carbon::parse($calculate['aplikasi_pinjaman']['bulan_mulai']);
+            $a = $bulanTahunJt->format('Y-m-');
+            $b = $tanggalJatuhTempo->format('d');
+
+            $jatuhTempo = Carbon::parse($a . $b);
 
             foreach ($calculate['result'] as $key => $value) {
 
                 if ($key != count($calculate['result']) -1) {
                     if ($key == 0) {
                         $status = 'lunas';
-                        $tanggalJatuhTempo = Carbon::now()->format('Y-m-d');
+                        $tanggalJatuhTempo = $jatuhTempo->format('Y-m-d');
                     }else{
                         $status = 'belum dibayar';
                         $tanggalJatuhTempo = $jatuhTempo->addMonths(1)->format('Y-m-d');
@@ -269,11 +280,11 @@ class AplikasiPinjaman extends Controller
         $number = Carbon::now()->format('d');
         $number = (Int)$number;
 
-        if ($number <= 17) {
-            $balance = 17 - $number;
+        if ($number <= 10) {
+            $balance = 10 - $number;
             $res = Carbon::now()->addDay($balance);
         }else{
-            $balance = $number - 17;
+            $balance = $number - 10;
             $res = $number - $balance;
             $res = Carbon::now()->addDay($balance);
         }

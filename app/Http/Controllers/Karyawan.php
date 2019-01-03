@@ -78,14 +78,14 @@ class Karyawan extends Controller
 	public function save(request $request) {
 
 		// return $request->id;
-		$anggota = MAnggota::where('id', $request->id)->first();
+		$anggota = User::where('id', $request->id)->first();
 		 // return $anggota;
 		$anggota->nama = $request->nama;
 		$anggota->ttl = $request->ttl;
 		$anggota->jenis_kelamin = $request->jenis_kelamin;
-		$anggota->alamat = $request->alamat;
 		$anggota->telepon = $request->telepon;
 		$anggota->email = $request->email;
+		$anggota->password = bcrypt($request->password);
 		$anggota->status = 'Karyawan';
 
 		$anggota->save();

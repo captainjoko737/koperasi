@@ -6,7 +6,7 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="image text-center">
-          <img src="{{ url('assets/image_assets/logo.png') }}" class="img-circle" alt="User Image">
+          <img src="{{ url('public/images/logo_fkip.png') }}" class="img-circle" alt="User Image">
         </div>
         
       </div>
@@ -51,7 +51,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('DataPinjaman') }}"><i class="fa fa-circle-o"></i>Data Pinjaman</a></li>
+            <li><a href="{{ route('DataPinjaman') }}"><i class="fa fa-circle-o"></i>Data Pinjaman</a></li>
             <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('AngsuranTunggakan') }}"><i class="fa fa-circle-o"></i>Angsuran Tunggakan</a></li>
             <li><a href="{{ route('aplikasi_pinjaman') }}"><i class="fa fa-circle-o"></i>Aplikasi Pinjaman</a></li>
           </ul>
@@ -65,7 +65,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('bulanan') }}"><i class="fa fa-circle-o"></i>Bulanan</a></li>
+            <li><a href="{{ route('bulanan') }}"><i class="fa fa-circle-o"></i>Bulanan</a></li>
             <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('tahunan') }}"><i class="fa fa-circle-o"></i>Tahunan</a></li>
           </ul>
         </li>
