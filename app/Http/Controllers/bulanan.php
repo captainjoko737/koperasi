@@ -46,6 +46,7 @@ class Bulanan extends Controller
 					->whereYear('tanggal_jatuh_tempo' , Carbon::today()->year)
 					->orderBy('id', 'DESC')->first();
 
+				$anggota[$key]['tenor'] = $pinjaman['tenor'];
 				$anggota[$key]['angsuran'] = $angsuranResult['angsuran_pokok'];
 				$anggota[$key]['jasa'] = $angsuranResult['angsuran_bunga'];
 				$anggota[$key]['denda'] = $angsuranResult['denda'];
@@ -54,6 +55,7 @@ class Bulanan extends Controller
 				$anggota[$key]['jumlah'] = $angsuranResult['angsuran_pokok'] + $angsuranResult['angsuran_bunga'] + $angsuranResult['denda'] + $simpananWajib; 
 
 			}else{
+				$anggota[$key]['tenor'] = 0;
 				$anggota[$key]['angsuran'] = 0;
 				$anggota[$key]['jasa'] = 0;
 				$anggota[$key]['denda'] = 0;

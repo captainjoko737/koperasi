@@ -83,7 +83,7 @@
                   @endif
 
                   @if ($value['keterangan'] != 0)
-                    <td>{{ $value['keterangan'] }}</td>
+                    <td>{{ $value['keterangan'] }} / {{ $value['tenor'] }}</td>
                   @else
                     <td>-</td>
                   @endif

@@ -20,7 +20,7 @@ class DataPinjaman extends Controller
 		$data['result'] = MPinjaman::join('anggota', 'anggota.id', '=', 'pinjaman.id_user')
 			->select('pinjaman.*', 'anggota.nama')
 			->get();
-
+// return $data;
 		return view('DataPinjaman', $data);
 	}
 
@@ -109,6 +109,46 @@ class DataPinjaman extends Controller
     	
     }
 
+    public function bayarCepat(request $request) {
+
+        $pinjaman = MPinjaman::where('id', $request->id)->first();
+
+        $result = MAngsuran::where('id_pinjaman', $pinjaman->id)
+            ->where('status', 'belum dibayar')
+            ->get();
+
+        $totalAngsuranPokok = 0;
+        $totalBunga = 0;
+        $totalDenda = 0;
+        $totalBayar = 0;
+
+        foreach ($result as $key => $value) {
+            $result[$key]['angsuran_bunga'] = 0;
+            $result[$key]['total_angsuran'] = $value['angsuran_pokok'];
+            $totalAngsuranPokok += $value['angsuran_pokok'];
+            
+            $totalDenda += $value['denda'];
+            $totalBayar += $value['total_angsuran'];
+        }
+
+        $data['date'] = Carbon::now()->format('d/m/Y');
+        $data['angsuran_ke'] = $result->last()->angsuran_ke;
+        $data['sisa_pinjaman'] = $result->last()->sisa_pinjaman;
+        $data['total_angsuran_pokok'] = $totalAngsuranPokok;
+        $data['total_bunga'] = $totalBunga;
+        $data['total_denda'] = $totalDenda;
+        $data['total_bayar'] = $totalBayar;
+
+        $data['result'] = $result;
+        $data['admin'] = Auth::user();
+        $data['pinjaman'] = MPinjaman::join('anggota', 'anggota.id', '=', 'pinjaman.id_user')->where('pinjaman.id', $pinjaman->id)->first();
+        
+        $data['id_pinjaman'] = $pinjaman->id;
+        // return $data;
+        return view('pinjaman.bayar_cepat', $data);
+        
+    }
+
     public function konfirmasi(request $request) {
 
         $tanggalPembayaran = Carbon::now()->format('Y-m-d');
@@ -170,6 +210,71 @@ class DataPinjaman extends Controller
 
     }
 
+    public function konfirmasiCepat(request $request) {
+
+        $tanggalPembayaran = Carbon::now()->format('Y-m-d');
+
+        $pinjaman = MPinjaman::where('id', $request->id)->first();
+
+        $result = MAngsuran::where('id_pinjaman', $pinjaman->id)
+            ->where('status', 'belum dibayar')
+            ->get();
+
+        $totalAngsuranPokok = 0;
+        $totalBunga = 0;
+        $totalDenda = 0;
+        $totalBayar = 0;
+
+        foreach ($result as $key => $value) {
+            $result[$key]['angsuran_bunga'] = 0;
+            $result[$key]['total_angsuran'] = $value['angsuran_pokok'];
+            $totalAngsuranPokok += $value['angsuran_pokok'];
+
+            $totalDenda += $value['denda'];
+            $totalBayar += $value['angsuran_pokok'];
+
+            MAngsuran::where('id', $value->id)
+                        ->update([
+                            'status' => 'lunas', 
+                            'angsuran_bunga' => 0,
+                            'total_angsuran' => $value['angsuran_pokok'],
+                            'tanggal_pembayaran' => $tanggalPembayaran
+                        ]);
+
+        }
+
+        $data['date'] = Carbon::now()->format('d/m/Y');
+        $data['angsuran_ke'] = $result->last()->angsuran_ke;
+        $data['sisa_pinjaman'] = $result->last()->sisa_pinjaman;
+        $data['total_angsuran_pokok'] = $totalAngsuranPokok;
+        $data['total_bunga'] = $totalBunga;
+        $data['total_denda'] = $totalDenda;
+        $data['total_bayar'] = $totalBayar;
+
+        $data['result'] = $result;
+        $data['admin'] = Auth::user();
+        $data['pinjaman'] = MPinjaman::join('anggota', 'anggota.id', '=', 'pinjaman.id_user')->where('pinjaman.id', $pinjaman->id)->first();
+        $data['id'] = $request->id;
+        $data['id_pinjaman'] = $request->id_pinjaman;
+
+        $json_data = json_encode($data);
+
+        MAngsuran::where('id', $result->last()->id)
+                        ->update([
+                            'jumlah' => $totalBayar, 
+                            'json_data' => $json_data
+                        ]);
+
+        MPinjaman::where('id', $result->last()->id_pinjaman)
+                        ->update([
+                            'angsuran_ke' => $result->last()->angsuran_ke,
+                            'sisa_pinjaman' => $result->last()->sisa_pinjaman
+                        ]);
+
+        return redirect()->route('DataPinjaman');
+
+    }
+
     public function prints(request $request) {
         
         $result = MAngsuran::where('id_pinjaman', $request->id_pinjaman)
@@ -207,6 +312,45 @@ class DataPinjaman extends Controller
         return view('pinjaman.print', $data);
     }
 
+    public function printsCepat(request $request) {
+        
+        $pinjaman = MPinjaman::where('id', $request->id)->first();
+
+        $result = MAngsuran::where('id_pinjaman', $pinjaman->id)
+            ->where('status', 'belum dibayar')
+            ->get();
+
+        $totalAngsuranPokok = 0;
+        $totalBunga = 0;
+        $totalDenda = 0;
+        $totalBayar = 0;
+
+        foreach ($result as $key => $value) {
+            $result[$key]['angsuran_bunga'] = 0;
+            $result[$key]['total_angsuran'] = $value['angsuran_pokok'];
+            $totalAngsuranPokok += $value['angsuran_pokok'];
+            
+            $totalDenda += $value['denda'];
+            $totalBayar += $value['total_angsuran'];
+        }
+
+        $data['date'] = Carbon::now()->format('d/m/Y');
+        $data['angsuran_ke'] = $result->last()->angsuran_ke;
+        $data['sisa_pinjaman'] = $result->last()->sisa_pinjaman;
+        $data['total_angsuran_pokok'] = $totalAngsuranPokok;
+        $data['total_bunga'] = $totalBunga;
+        $data['total_denda'] = $totalDenda;
+        $data['total_bayar'] = $totalBayar;
+
+        $data['result'] = $result;
+        $data['admin'] = Auth::user();
+        $data['pinjaman'] = MPinjaman::join('anggota', 'anggota.id', '=', 'pinjaman.id_user')->where('pinjaman.id', $pinjaman->id)->first();
+        
+        $data['id_pinjaman'] = $pinjaman->id;
+        // return $data;
+        return view('pinjaman.print', $data);
+    }
+
     public function cetak(request $request) {
         
         $result = MAngsuran::where('id_pinjaman', $request->id_pinjaman)
@@ -215,7 +359,7 @@ class DataPinjaman extends Controller
 
         // return $this->showJSON($result['json_data']);
         $data = $this->showJSON($result['json_data']);
-
+// return $data;
         foreach ($data['result'] as $key => $value) {
             $data['result'][$key]['tanggal_jatuh_tempo'] = Carbon::parse($value['tanggal_jatuh_tempo']);
         }

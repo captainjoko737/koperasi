@@ -24,7 +24,12 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/anggota/create', 'Anggota@create')->name('anggota.create');
 	Route::get('/anggota/edit', 'Anggota@edit')->name('anggota.edit');
 	Route::get('/anggota/save', 'Anggota@save')->name('anggota.save');
-	Route::get('/anggota/delete', 'Anggota@drop')->name('anggota.delete');
+	Route::get('/anggota/keluar/print', 'Anggota@printKeluar')->name('anggota.keluar.print');
+	Route::get('/anggota/keluar', 'Anggota@keluar')->name('anggota.keluar');
+	Route::get('/anggota/konfirmasi/keluar', 'Anggota@konfirmasiKeluar')->name('anggota.konfirmasi.keluar');
+	Route::delete('/anggota/delete', 'Anggota@drop')->name('anggota.delete');
+
+	
 
 	Route::get('/CalonAnggota/edit', 'CalonAnggota@edit')->name('CalonAnggota.edit');
 	Route::get('/CalonAnggota/save', 'CalonAnggota@save')->name('CalonAnggota.save');
@@ -82,8 +87,11 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::get('/DataPinjaman/detail/print', 'DataPinjaman@detailPrint')->name('pinjaman.detail.print');
 	Route::get('/bayar', 'DataPinjaman@bayar')->name('pinjaman.bayar');
+	Route::get('/bayar/cepat', 'DataPinjaman@bayarCepat')->name('pinjaman.bayar.cepat');
 	Route::get('/konfirmasi', 'DataPinjaman@konfirmasi')->name('pinjaman.konfirmasi');
+	Route::get('/konfirmasi/cepat', 'DataPinjaman@konfirmasiCepat')->name('pinjaman.konfirmasi.cepat');
 	Route::get('/print', 'DataPinjaman@prints')->name('pinjaman.print');
+	Route::get('/print/cepat', 'DataPinjaman@printsCepat')->name('pinjaman.print.cepat');
 	Route::get('/cetak', 'DataPinjaman@cetak')->name('pinjaman.cetak');
 	Route::delete('/hapus', 'DataPinjaman@hapus')->name('pinjaman.hapus');
 
