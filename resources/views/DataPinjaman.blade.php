@@ -55,7 +55,10 @@
                       <a href="{{ route('pinjaman.detail', ['id' => $value['id']]) }}" ><i class="fa fa-search"></i></a>
 
                       <a href="{{ route('pinjaman.detail.print', ['id' => $value['id']]) }}" target="_blank"><i class="fa fa-print"></i></a> 
-                      <a href="{{ route('pinjaman.bayar.cepat', ['id' => $value['id']]) }}"><i class="fa fa-money"></i></a> 
+
+                      @if ($value['tenor'] != $value['angsuran_ke'])
+                        <a href="{{ route('pinjaman.bayar.cepat', ['id' => $value['id']]) }}"><i class="fa fa-money"></i></a> 
+                      @endif
                         @if ($value['angsuran_ke'] == 0)
 
                           <form class="delete" action="{{ route('pinjaman.hapus') }}" method="POST">

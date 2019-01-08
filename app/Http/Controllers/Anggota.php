@@ -207,7 +207,6 @@ class Anggota extends Controller
 		MAngsuran::where('id_user', $request->id)->where('status', 'belum dibayar')->delete();
 		MPinjaman::where('id_user', $request->id)->delete();
 
-		// return view('anggota.keluar', $data);
 		return redirect()->route('anggota');		
 	
 	}
@@ -217,6 +216,8 @@ class Anggota extends Controller
 		$anggota = MAnggota::where('id', $request->id)->first();
 
 		$data = $this->showJSON($anggota['json_data']);
+
+		// return $data;
 
         return view('anggota.print_keluar', $data);
 

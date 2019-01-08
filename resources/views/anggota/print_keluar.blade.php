@@ -179,7 +179,7 @@
           <div class="table-responsive">
             <table>
               <tr>
-                <td style="width:50%">{{ $bendahara['nama'] != null ? $bendahara['nama'] : 'Tidak Ada'}}</td>
+                <td style="width:50%">{{ $anggota['nama'] != null ? $anggota['nama'] : 'Tidak Ada'}}</td>
               </tr>
             </table>
           </div>
