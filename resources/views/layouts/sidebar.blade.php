@@ -70,6 +70,8 @@
           </ul>
         </li>
 
+        <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('biling') }}"><i class="fa fa-money"></i>Billing</a></li>
+
         <li {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}><a href="{{ route('pengaturan.index') }}"><i class="fa fa-gear"></i>Pengaturan</a></li>
 
         <li class="treeview" {{ isset($status_user) ? $status_user == 'accounting' ? '' : 'hidden' : '' }}>

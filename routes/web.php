@@ -101,6 +101,10 @@ Route::group(['middleware' => 'auth'], function(){
 
 	// Route::get('/DataPinjaman/print', 'DataPinjaman@print')->name('pinjaman.print');
 
+	Route::get('/biling', 'Biling@index')->name('biling');
+	Route::get('/biling/search', 'Biling@search')->name('biling.search');
+	Route::get('/biling/post', 'Biling@post')->name('biling.post');
+
 
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 

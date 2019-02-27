@@ -77,7 +77,9 @@
                           @if ($value['tanggal_pembayaran'] == null && $value['status_bayar'] == true)
                             <a href="{{ route('pinjaman.bayar', ['id' => $value['id'], 'id_pinjaman' => $value['id_pinjaman']]) }}" class="btn btn-default"> <i class="fa fa-money"></i> Bayar</a>
                           @elseif ($value['jumlah'] != 0)
-                            <a href="{{ route('pinjaman.cetak', ['id' => $value['id'], 'id_pinjaman' => $value['id_pinjaman']]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i>  Cetak</a>
+                            @if ($value['json_data'] != null)
+                              <a href="{{ route('pinjaman.cetak', ['id' => $value['id'], 'id_pinjaman' => $value['id_pinjaman']]) }}" target="_blank" class="btn btn-default"><i class="fa fa-print"></i>  Cetak</a>
+                            @endif
                           @endif
                             
                         </th>
